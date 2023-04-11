@@ -1,3 +1,4 @@
+import Cart from "../Cart/Cart";
 import Button from "../UI/Button";
 
 const Header = () => {
@@ -5,9 +6,11 @@ const Header = () => {
     <header className=" sticky top-0 bg-slate-900">
       <div className="container flex justify-between items-center  mx-auto py-2 h-16">
         <div className="text-white text-xl">فروشگاه مصالح ساختمانی</div>
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex gap-2">
           <Button className="bg-slate-700 px-3"> ورود | ثبت نام</Button>
-          <Button className="bg-transparent mr-2 px-4">سبد خرید</Button>
+          <Button className="bg-transparent px-4">
+            <Cart />
+          </Button>
         </div>
         <div class="flex lg:hidden">
           <div class="space-y-2">
