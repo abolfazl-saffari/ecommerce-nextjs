@@ -3,7 +3,7 @@ import Button from "../UI/Button";
 
 const Footer = () => {
   return (
-    <footer className="w-full fixed bottom-0 left-0 bg-slate-900">
+    <footer className="w-full bg-slate-900">
       <div className="container flex items-center justify-between mx-auto h-20">
         <h2 className="text-white text-xl">فروشگاه مصالح ساختمانی</h2>
         <Button className="flex justify-between items-center gap-2 bg-slate-700 px-3">
