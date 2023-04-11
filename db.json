@@ -1,0 +1,29 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Abolfazl",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "Ahmadreza",
+      "author": "typicode"
+    },
+    {
+      "id": 3,
+      "title": "AmirReza",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
