@@ -3,7 +3,7 @@ import Button from "../UI/Button";
 
 const Header = () => {
   return (
-    <header className=" sticky top-0 bg-slate-900">
+    <header className="sticky top-0 bg-slate-900">
       <div className="container flex justify-between items-center  mx-auto py-2 h-16">
         <div className="text-white text-xl">فروشگاه مصالح ساختمانی</div>
         <div className="hidden lg:flex gap-2">
