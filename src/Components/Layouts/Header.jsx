@@ -1,4 +1,4 @@
-import Cart from "../Cart/Cart";
+import CartIconWrapper from "../Cart/CartIconWrapper";
 import Button from "../UI/Button";
 
 const Header = () => {
@@ -9,7 +9,7 @@ const Header = () => {
         <div className="hidden lg:flex gap-2">
           <Button className="bg-slate-700 px-3"> ورود | ثبت نام</Button>
           <Button className="bg-transparent px-4">
-            <Cart />
+            <CartIconWrapper />
           </Button>
         </div>
         <div class="flex lg:hidden">
