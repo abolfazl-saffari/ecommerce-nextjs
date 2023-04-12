@@ -3,6 +3,7 @@ import Footer from "@/Components/Layouts/Footer";
 import Container from "@/Components/Layouts/Container";
 import ProductsWrapper from "@/Components/Products/ProductsWrapper";
 import ProductCard from "@/Components/Products/ProductCard";
+import Checkout from "@/Components/Checkout/Checkout";
 
 export default function Home() {
   return (
