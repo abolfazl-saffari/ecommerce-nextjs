@@ -4,13 +4,11 @@ import Container from "@/Components/Layouts/Container";
 import ProductsWrapper from "@/Components/Products/ProductsWrapper";
 import ProductCard from "@/Components/Products/ProductCard";
 import Checkout from "@/Components/Checkout/Checkout";
-import LoginForm from "@/Components/Panels/Admin/LoginForm";
 
 export default function Home() {
   return (
     <div className="font-vazir rtl">
-      <LoginForm />
-      {/* <Header />
+      <Header />
       <Container>
         <ProductsWrapper title={"آهن آلات"}>
           <ProductCard />
@@ -44,7 +42,7 @@ export default function Home() {
           <ProductCard />
         </ProductsWrapper>
       </Container>
-      <Footer /> */}
+      <Footer />
     </div>
   );
 }
