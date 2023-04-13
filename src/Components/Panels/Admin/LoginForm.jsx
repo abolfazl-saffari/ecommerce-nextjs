@@ -1,6 +1,6 @@
 import FormInput from "./FormInput";
 import Button from "@/Components/UI/Button";
-import BackToHome from "./BackToHome";
+import Anchor from "./Anchor";
 
 const LoginForm = () => {
   return (
@@ -28,7 +28,7 @@ const LoginForm = () => {
             ورود
           </Button>
         </form>
-        <BackToHome className="absolute left-2.5 bottom-2.5" />
+        <Anchor className="absolute left-2.5 bottom-2.5">بازگشت به سایت</Anchor>
       </div>
     </div>
   );
