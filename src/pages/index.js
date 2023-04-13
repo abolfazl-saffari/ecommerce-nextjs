@@ -3,9 +3,6 @@ import Footer from "@/Components/Layouts/Footer";
 import Container from "@/Components/Layouts/Container";
 import ProductsWrapper from "@/Components/Products/ProductsWrapper";
 import ProductCard from "@/Components/Products/ProductCard";
-import AdminHeader from "@/Components/Panels/Admin/AdminHeader";
-import ProductsManagement from "@/Components/Panels/Admin/ProductsManagement";
-import Modal from "@/Components/UI/Modal";
 
 export default function Home() {
   return (
