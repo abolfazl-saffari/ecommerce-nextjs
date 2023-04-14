@@ -1,4 +1,4 @@
-const ManagementItem = () => {
+const ProductManagementItem = () => {
   return (
     <tr className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
       <th
@@ -30,4 +30,4 @@ const ManagementItem = () => {
   );
 };
 
-export default ManagementItem;
+export default ProductManagementItem;

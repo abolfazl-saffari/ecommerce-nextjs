@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import Button from "@/Components/UI/Button";
-import ManagementItem from "./ManagementItem";
 import InvAndPriceManagementItem from "./InvAndPriceManagementItem";
 
 const InvAndPriceProductsManagement = () => {
