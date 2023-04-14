@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import Button from "@/Components/UI/Button";
 import OrderManagementItem from "./OrderManagementItem";
 import RadioInputs from "./RadioInputs";
+import SortingArrowToggle from "./SortingArrowToggle";
 
 const OrdersManagement = () => {
   return (
@@ -20,9 +21,12 @@ const OrdersManagement = () => {
               <th scope="col" className="px-6 py-3">
                 مجموع مبلغ
               </th>
-              <th scope="col" className="px-6 py-3 text-center">
+              <SortingArrowToggle
+                scope="col"
+                className="px-6 py-3 text-center flex justify-center items-center gap-2"
+              >
                 زمان ثبت سفارش
-              </th>
+              </SortingArrowToggle>
               <th scope="col" className="px-6 py-3">
                 <span className="sr-only">Edit</span>
               </th>
