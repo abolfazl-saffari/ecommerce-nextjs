@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import Button from "@/Components/UI/Button";
 import ProductManagementItem from "./ProductManagementItem";
+import SortingArrowToggle from "./SortingArrowToggle";
 
 const ProductsManagement = () => {
   return (
@@ -21,9 +22,9 @@ const ProductsManagement = () => {
               <th scope="col" className="px-6 py-3">
                 نام کالا
               </th>
-              <th scope="col" className="px-6 py-3">
+              <SortingArrowToggle scope="col" className="px-6 py-3 flex gap-2">
                 دسته بندی
-              </th>
+              </SortingArrowToggle>
               <th scope="col" className="px-6 py-3">
                 <span className="sr-only">Edit</span>
               </th>
