@@ -1,28 +1,27 @@
 import { Fragment } from "react";
 import Button from "@/Components/UI/Button";
-import ProductManagementItem from "./ProductManagementItem";
+import OrderManagementItem from "./OrderManagementItem";
+import RadioInputs from "./RadioInputs";
 
-const ProductsManagement = () => {
+const OrdersManagement = () => {
   return (
     <Fragment>
       <div className="flex flex-col md:flex-row mb-12 justify-between items-center">
-        <h2 className="text-3xl mb-5 md:mb-0">مدیریت کالا</h2>
-        <Button className="w-full px-12 py-4 md:w-auto bg-green-600">
-          افزودن کالا
-        </Button>
+        <h2 className="text-3xl mb-5 md:mb-0">مدیریت سفارش ها</h2>
+        <RadioInputs />
       </div>
       <div className="relative mx-auto overflow-x-auto shadow-md sm:rounded-lg mb-24 md:mb-10">
         <table className="w-full text-base text-right text-gray-500 dark:text-gray-400 whitespace-nowrap">
           <thead className="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3">
-                تصویر
+                نام کاربر
               </th>
               <th scope="col" className="px-6 py-3">
-                نام کالا
+                مجموع مبلغ
               </th>
-              <th scope="col" className="px-6 py-3">
-                دسته بندی
+              <th scope="col" className="px-6 py-3 text-center">
+                زمان ثبت سفارش
               </th>
               <th scope="col" className="px-6 py-3">
                 <span className="sr-only">Edit</span>
@@ -30,18 +29,18 @@ const ProductsManagement = () => {
             </tr>
           </thead>
           <tbody>
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
+            <OrderManagementItem />
+            <OrderManagementItem />
+            <OrderManagementItem />
+            <OrderManagementItem />
+            <OrderManagementItem />
+            <OrderManagementItem />
+            <OrderManagementItem />
+            <OrderManagementItem />
+            <OrderManagementItem />
+            <OrderManagementItem />
+            <OrderManagementItem />
+            <OrderManagementItem />
           </tbody>
         </table>
       </div>
@@ -49,4 +48,4 @@ const ProductsManagement = () => {
   );
 };
 
-export default ProductsManagement;
+export default OrdersManagement;
