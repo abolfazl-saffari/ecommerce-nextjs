@@ -1,5 +1,12 @@
 import Modal from "@/Components/UI/Modal";
 import Button from "@/Components/UI/Button";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import dynamic from "next/dynamic";
+
+const Weditor = dynamic(
+  () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
+  { ssr: false }
+);
 
 const ProductManagementModal = () => {
   return (
@@ -48,11 +55,16 @@ const ProductManagementModal = () => {
         >
           توضیحات:
         </label>
-        <textarea
-          id="message"
-          rows="4"
-          className="block resize-none mb-6 w-full p-1 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-        ></textarea>
+        <div className="ltr bg-white">
+          <Weditor
+            // editorState={editorState}
+            toolbarClassName="toolbarClassName"
+            wrapperClassName="wrapperClassName"
+            editorClassName="editorClassName"
+            // onEditorStateChange={this.onEditorStateChange}
+          />
+        </div>
+        ;
       </div>
       <div class="flex justify-center p-4 rounded-t">
         <Button className="w-full md:w-1/5 bg-slate-700 px-3">ذخیره</Button>

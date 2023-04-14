@@ -1,6 +1,6 @@
 const Modal = ({ title, children }) => {
   return (
-    <div className="" hidden>
+    <div className="hidden">
       <div className="fixed left-0 top-0 w-full h-full opacity-75 bg-white z-10"></div>
       <div className="fixed top-[20%] left-[5%] right-[5%] lg:left-[30%] lg:right-[30%] z-40">
         <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 px-6">
