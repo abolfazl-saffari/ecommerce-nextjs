@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Container from "../Layouts/Container";
 import Button from "../UI/Button";
 import CartItemsTable from "./CartItemsTable";
@@ -11,7 +12,11 @@ const Cart = () => {
         <h4 className="text-3xl">
           جمع:<span className="ms-5"> 1035000 تومان</span>
         </h4>
-        <Button className="bg-green-600 px-12 py-4">نهایی کردن سبد خرید</Button>
+        <Link href="cart/checkout">
+          <Button className="bg-green-600 px-12 py-4">
+            نهایی کردن سبد خرید
+          </Button>
+        </Link>
       </div>
     </Container>
   );

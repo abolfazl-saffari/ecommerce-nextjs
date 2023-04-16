@@ -5,16 +5,18 @@ const AdminHeaderNavigation = () => {
     <div className="hidden lg:flex gap-2">
       <ul className="flex gap-10">
         <li>
-          <Anchor active={true}>کالاها</Anchor>
+          <Anchor href="/adminPanel/products" active={true}>
+            کالاها
+          </Anchor>
         </li>
         <li>
-          <Anchor>موجودی و قیمت ها</Anchor>
+          <Anchor href="/adminPanel/inventory">موجودی و قیمت ها</Anchor>
         </li>
         <li>
-          <Anchor>سفارش ها</Anchor>
+          <Anchor href="/adminPanel/orders">سفارش ها</Anchor>
         </li>
         <li>
-          <Anchor> بازگشت به سایت</Anchor>
+          <Anchor href="/"> بازگشت به سایت</Anchor>
         </li>
       </ul>
     </div>
