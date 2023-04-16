@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Container from "../Layouts/Container";
 import Button from "../UI/Button";
 
@@ -95,7 +96,7 @@ const Checkout = () => {
         </div>
         <div className="flex justify-center my-10">
           <Button type="submit" className="w-full md:w-1/5 bg-green-600 py-4">
-            پرداخت
+            <Link href="/payment">پرداخت</Link>
           </Button>
         </div>
       </form>
