@@ -1,14 +1,11 @@
-import Header from "@/Components/Layouts/Header";
-import Footer from "@/Components/Layouts/Footer";
-import Container from "@/Components/Layouts/Container";
 import ProductsWrapper from "@/Components/Products/ProductsWrapper";
 import ProductCard from "@/Components/Products/ProductCard";
+import HomeLayout from "@/Components/Layouts/HomeLayout/HomeLayout";
 
 export default function Home() {
   return (
     <div className="font-vazir rtl">
-      <Header />
-      <Container>
+      <HomeLayout>
         <ProductsWrapper title={"آهن آلات"}>
           <ProductCard />
           <ProductCard />
@@ -28,20 +25,8 @@ export default function Home() {
           <ProductCard />
           <ProductCard />
           <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
         </ProductsWrapper>
-      </Container>
-      <Footer />
+      </HomeLayout>
     </div>
   );
 }
