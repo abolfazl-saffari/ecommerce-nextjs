@@ -1,10 +1,11 @@
+import { Fragment } from "react";
 import ProductsWrapper from "@/Components/Products/ProductsWrapper";
 import ProductCard from "@/Components/Products/ProductCard";
 import HomeLayout from "@/Components/Layouts/HomeLayout/HomeLayout";
 
 export default function Home() {
   return (
-    <div className="font-vazir rtl">
+    <Fragment>
       <HomeLayout>
         <ProductsWrapper title={"آهن آلات"}>
           <ProductCard />
@@ -27,6 +28,6 @@ export default function Home() {
           <ProductCard />
         </ProductsWrapper>
       </HomeLayout>
-    </div>
+    </Fragment>
   );
 }

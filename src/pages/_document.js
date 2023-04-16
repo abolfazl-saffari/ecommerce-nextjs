@@ -11,7 +11,7 @@ export default function Document() {
           type="text/css"
         />
       </Head>
-      <body>
+      <body className="font-vazir rtl">
         <Main />
         <NextScript />
       </body>
