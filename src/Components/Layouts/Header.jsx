@@ -7,7 +7,7 @@ const Header = () => {
       <div className="container flex justify-between items-center  mx-auto py-2 h-16">
         <div className="text-white text-xl">فروشگاه مصالح ساختمانی</div>
         <div className="hidden lg:flex gap-2">
-          <Button className="bg-slate-700 px-3"> ورود | ثبت نام</Button>
+          <Button className="bg-slate-700 px-3">مدیریت</Button>
           <Button className="bg-transparent px-4">
             <CartIconWrapper />
           </Button>
