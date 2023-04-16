@@ -1,13 +1,18 @@
-import { useRouter } from "next/router";
+import Header from "@/Components/Layouts/Header";
+import Footer from "@/Components/Layouts/Footer";
+import Container from "@/Components/Layouts/Container";
+import { Fragment } from "react";
+import SingleProduct from "@/Components/Products/SingleProduct";
 
 const product = () => {
-  const router = useRouter();
-  const { mainCategory, subCategory, productId } = router.query;
-
   return (
-    <p>
-      /{mainCategory}/{subCategory}/{productId}
-    </p>
+    <Fragment>
+      <Header />
+      <Container>
+        <SingleProduct />
+      </Container>
+      <Footer />
+    </Fragment>
   );
 };
 
