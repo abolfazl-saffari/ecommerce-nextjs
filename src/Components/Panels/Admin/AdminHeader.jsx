@@ -1,10 +1,13 @@
+import Link from "next/link";
 import AdminHeaderNavigation from "./AdminHeaderNavigation";
 
 const AdminHeader = () => {
   return (
     <header className="sticky top-0 bg-slate-900 z-10">
       <div className="container flex justify-between items-center mx-auto py-2 h-16">
-        <div className="text-white text-xl">پنل مدیریت فروشگاه</div>
+        <Link href="/adminPanel/products">
+          <div className="text-white text-xl">پنل مدیریت فروشگاه</div>
+        </Link>
         <AdminHeaderNavigation />
         <div class="flex lg:hidden">
           <div class="space-y-2">
