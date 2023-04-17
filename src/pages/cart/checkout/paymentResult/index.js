@@ -1,11 +1,11 @@
-import AdminLayout from "@/Components/Layouts/AdminLayout/AdminLayout";
+import HomeLayout from "@/Components/Layouts/HomeLayout/HomeLayout";
 import PaymentResult from "@/Components/Payment/PaymentResult";
 
 const index = () => {
   return (
-    <AdminLayout>
+    <HomeLayout>
       <PaymentResult />
-    </AdminLayout>
+    </HomeLayout>
   );
 };
 
