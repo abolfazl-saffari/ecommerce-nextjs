@@ -1,3 +1,4 @@
+import Link from "next/link";
 import CartIconWrapper from "../Cart/CartIconWrapper";
 import Button from "../UI/Button";
 
@@ -5,11 +6,17 @@ const Header = () => {
   return (
     <header className="sticky top-0 bg-slate-900">
       <div className="container flex justify-between items-center  mx-auto py-2 h-16">
-        <div className="text-white text-xl">فروشگاه مصالح ساختمانی</div>
+        <Link href="/">
+          <div className="text-white text-xl">فروشگاه مصالح ساختمانی</div>
+        </Link>
         <div className="hidden lg:flex gap-2">
-          <Button className="bg-slate-700 px-3"> ورود | ثبت نام</Button>
+          <Button className="bg-slate-700 px-3">
+            <Link href="/login">مدیریت</Link>
+          </Button>
           <Button className="bg-transparent px-4">
-            <CartIconWrapper />
+            <Link href="/cart">
+              <CartIconWrapper />
+            </Link>
           </Button>
         </div>
         <div class="flex lg:hidden">

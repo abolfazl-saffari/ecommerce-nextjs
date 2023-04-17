@@ -1,10 +1,10 @@
+import Checkout from "@/Components/Checkout/Checkout";
 import HomeLayout from "@/Components/Layouts/HomeLayout/HomeLayout";
-import Cart from "../../Components/Cart/Cart";
 
 const index = () => {
   return (
     <HomeLayout>
-      <Cart />
+      <Checkout />
     </HomeLayout>
   );
 };
