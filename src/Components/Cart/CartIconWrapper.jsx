@@ -3,7 +3,7 @@ import CartIcon from "./CartIcon";
 
 const CartIconWrapper = () => {
   return (
-    <div className="flex items-center gap-2 relative">
+    <div className="relative flex items-center gap-2">
       <CartIcon />
       <CartCountBadge />
     </div>
