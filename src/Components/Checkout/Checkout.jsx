@@ -8,94 +8,84 @@ const Checkout = () => {
       <h2 className="text-3xl mb-10">نهایی کردن خرید</h2>
       <form>
         <div className="grid md:grid-cols-2 md:gap-6">
-          <div className="z-0 w-full mb-6 group">
-            <label
-              htmlFor="floating_first_name"
-              className="peer-focus:font-medium text-lg text-black"
-            >
+          <div className="w-full mb-6 z-0">
+            <label htmlFor="first_name" className="text-lg text-black">
               نام :
             </label>
             <input
               type="text"
-              name="floating_first_name"
-              id="floating_first_name"
-              className="block mt-3 py-4 px-2 w-full text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 sm:text-xs"
+              name="first_name"
+              id="first_name"
+              className="w-full block text-sm rounded-lg border mt-3 py-4 px-2 text-gray-900 bg-gray-50 border-gray-400 sm:text-xs"
               placeholder="ابوالفضل"
               required
             />
           </div>
-          <div className="z-0 w-full mb-6 group">
-            <label
-              htmlFor="floating_first_name"
-              className="peer-focus:font-medium text-lg text-black"
-            >
+          <div className="w-full mb-6 z-0">
+            <label htmlFor="last_name" className="text-lg text-black">
               نام خانوادگی :
             </label>
             <input
               type="text"
-              name="floating_first_name"
-              id="floating_first_name"
-              className="block mt-3 py-4 px-2 w-full text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 sm:text-xs"
+              name="last_name"
+              id="last_name"
+              className="w-full block text-sm rounded-lg border mt-3 py-4 px-2 text-gray-900 bg-gray-50 border-gray-400 sm:text-xs"
               placeholder="صفاری"
               required
             />
           </div>
         </div>
         <div className="grid md:grid-cols-2 md:gap-6">
-          <div className="z-0 w-full mb-6 group">
-            <label
-              htmlFor="floating_first_name"
-              className="peer-focus:font-medium text-lg text-black"
-            >
+          <div className="w-full mb-6 z-0">
+            <label htmlFor="address" className="text-lg text-black">
               آدرس :
             </label>
             <textarea
-              id="message"
+              name="address"
+              id="address"
               rows="4"
+              className="w-full block text-sm rounded-lg resize-none mt-3 py-4 px-2 border text-gray-900 bg-gray-50 border-gray-400 sm:text-xs"
               placeholder="تهران یافت آباد"
-              className="block resize-none mt-3 py-4 px-2 w-full text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 sm:text-xs"
+              required
             ></textarea>
           </div>
-          <div className="z-0 w-full mb-6 group">
-            <label
-              htmlFor="floating_first_name"
-              className="peer-focus:font-medium text-lg text-black"
-            >
+          <div className="w-full mb-6 z-0">
+            <label htmlFor="phone_number" className="text-lg text-black">
               تلفن همراه :
-              <span className="text-gray-400 ms-3">
-                جهت هماهنگی ارسال سفارش{" "}
+              <span className="ms-3 text-gray-400">
+                جهت هماهنگی ارسال سفارش
               </span>
             </label>
             <input
               type="tel"
-              name="floating_first_name"
-              id="floating_first_name"
-              className="block mt-3 py-4 px-2 w-full text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 sm:text-xs"
+              name="phone_number"
+              id="phone_number"
+              className="w-full block text-sm rounded-lg border mt-3 py-4 px-2 text-gray-900 bg-gray-50 border-gray-400 sm:text-xs"
               placeholder="09023547080"
               required
             />
           </div>
         </div>
         <div className="grid md:grid-cols-2 md:gap-6">
-          <div className="z-0 w-full mb-6 group">
+          <div className="w-full mb-6 z-0">
             <label
-              htmlFor="floating_first_name"
+              htmlFor="delivery_date"
               className="peer-focus:font-medium text-lg text-black"
             >
               تاریخ تحویل :
             </label>
             <input
               type="date"
-              name="floating_first_name"
-              id="floating_first_name"
-              className="block mt-3 py-4 px-2 w-full text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 sm:text-xs"
+              name="delivery_date"
+              id="delivery_date"
+              className="w-full block text-sm rounded-lg border mt-3 py-4 px-2 text-gray-900 bg-gray-50 border-gray-400 sm:text-xs"
               defaultValue="2023-04-12"
               required
             />
           </div>
         </div>
         <div className="flex justify-center my-10">
-          <Button type="submit" className="w-full md:w-1/5 bg-green-600 py-4">
+          <Button type="submit" className="w-full py-4 bg-green-600 md:w-1/5">
             <Link href="/payment">پرداخت</Link>
           </Button>
         </div>
