@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Fragment } from "react";
 
 const ProductsWrapper = ({ children, title, Sidebar }) => {
@@ -8,7 +9,7 @@ const ProductsWrapper = ({ children, title, Sidebar }) => {
       } col-span-6 lg:col-span-5 lg:mr-5`}
     >
       <h2 className="w-fit text-2xl mb-3 border-b-2 border-slate-900">
-        <a href="#">{title}</a>
+        <Link href="/tools">{title}</Link>
       </h2>
       <div
         className={

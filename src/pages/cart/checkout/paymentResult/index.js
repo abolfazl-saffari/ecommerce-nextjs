@@ -1,5 +1,12 @@
-const PaymentResult = () => {
-  return <p>payment result is : Felan</p>;
+import AdminLayout from "@/Components/Layouts/AdminLayout/AdminLayout";
+import PaymentResult from "@/Components/Payment/PaymentResult";
+
+const index = () => {
+  return (
+    <AdminLayout>
+      <PaymentResult />
+    </AdminLayout>
+  );
 };
 
-export default PaymentResult;
+export default index;

@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 const ProductCard = () => {
   return (
-    <a
-      href="#"
+    <Link
+      href="/tools/shovel/15"
       class="max-w-full h-40 items-center flex flex-row  bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
     >
       <img
@@ -17,7 +19,7 @@ const ProductCard = () => {
           20000 تومان
         </p>
       </div>
-    </a>
+    </Link>
   );
 };
 
