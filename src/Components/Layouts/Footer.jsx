@@ -1,4 +1,4 @@
-import ArrowUpIcon from "../ArrowUpIcon";
+import ArrowUpIcon from "../Icons/ArrowUpIcon";
 import Button from "../UI/Button";
 
 const Footer = () => {
