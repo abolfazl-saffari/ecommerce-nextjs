@@ -1,14 +1,11 @@
 const OrderManagementItem = () => {
   return (
-    <tr className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
+    <tr className="border-t-2 text-black bg-gray-300 border-slate-800 hover:bg-gray-50">
       <td className="px-6 py-4">ابوالفضل صفاری</td>
       <td className="px-6 py-4">2000000</td>
-      <td className="px-6 py-4 text-center">1399/1/5</td>
-      <td className="px-6 py-4 text-center">
-        <a
-          href="#"
-          className="font-medium text-blue-600 dark:text-blue-500 underline"
-        >
+      <td className="text-center px-6 py-4">1399/1/5</td>
+      <td className="text-center px-6 py-4">
+        <a href="#" className="font-medium text-blue-600 hover:underline">
           بررسی سفارش
         </a>
       </td>
