@@ -5,12 +5,12 @@ const FormInput = ({ id, type, name, autocomplete, label }) => {
         {label}
       </label>
       <input
+        className="relative block w-full outline-0 rounded-sm p-1.5 mt-2"
         id={id}
         name={name}
         type={type}
         autocomplete={autocomplete}
         required
-        className="relative block w-full p-1.5 mt-2 outline-0 rounded-sm"
       />
     </div>
   );

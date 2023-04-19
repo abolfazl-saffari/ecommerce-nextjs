@@ -2,7 +2,7 @@ import Anchor from "./Anchor";
 
 const AdminHeaderNavigation = () => {
   return (
-    <div className="hidden lg:flex gap-2">
+    <div className="hidden gap-2 lg:flex">
       <ul className="flex gap-10">
         <li>
           <Anchor href="/adminPanel/products" active={true}>

@@ -2,7 +2,7 @@ import Anchor from "./Anchor";
 
 const OrderManagementModalTableItem = () => {
   return (
-    <tr className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
+    <tr className="border-t-2 text-black bg-gray-300 border-slate-800 hover:bg-gray-50">
       <td className="px-6 py-4">
         <Anchor>روغن سرخ کردنی سمن - 1.35 کلیویی</Anchor>
       </td>
