@@ -2,9 +2,9 @@ import OrderManagementModalTableItem from "./OrderManagementModalTableItem";
 
 const OrderManagementModalTable = () => {
   return (
-    <div className="max-h-16 md:max-h-36 overflow-auto">
-      <table className="w-full text-base text-right text-gray-500 dark:text-gray-400 whitespace-nowrap">
-        <thead className="text-gray-700 uppercase bg-gray-50 ">
+    <div className="max-h-16 overflow-auto md:max-h-36">
+      <table className="w-full text-base text-right whitespace-nowrap text-gray-500">
+        <thead className="text-white uppercase bg-slate-800 ">
           <tr>
             <th scope="col" className="px-6 py-3">
               تصویر
