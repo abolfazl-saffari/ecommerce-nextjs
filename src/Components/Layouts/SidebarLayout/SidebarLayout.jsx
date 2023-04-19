@@ -1,10 +1,10 @@
 import { Fragment } from "react";
 import Header from "../Header";
+import Container from "../Container";
 import Sidebar from "../Sidebar";
 import Footer from "../Footer";
-import Container from "../Container";
-import ProductsWrapper from "../../Products/ProductsWrapper";
 import ProductCard from "../../Products/ProductCard";
+import ProductsWrapper from "../../Products/ProductsWrapper";
 
 const SidebarLayout = () => {
   return (
