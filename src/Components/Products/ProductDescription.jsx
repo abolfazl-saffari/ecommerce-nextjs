@@ -1,4 +1,4 @@
-const ProductDescription = ({ description }) => {
+const ProductDescription = () => {
   return (
     <p className="text-justify text-lg leading-8">
       لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفادهصوص
