@@ -1,10 +1,7 @@
-import { useRouter } from "next/router";
+import SidebarLayout from "@/Components/Layouts/SidebarLayout/SidebarLayout";
 
 const MainCategoryProducts = () => {
-  const router = useRouter();
-  const { mainCategory } = router.query;
-
-  return <p>/{mainCategory}</p>;
+  return <SidebarLayout />;
 };
 
 export default MainCategoryProducts;

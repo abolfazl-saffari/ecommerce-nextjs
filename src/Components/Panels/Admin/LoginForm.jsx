@@ -1,6 +1,7 @@
 import FormInput from "./FormInput";
 import Button from "@/Components/UI/Button";
 import Anchor from "./Anchor";
+import Link from "next/link";
 
 const LoginForm = () => {
   return (
@@ -25,10 +26,12 @@ const LoginForm = () => {
             label="رمزعبور:"
           />
           <Button className="w-full text-sm px-3 py-2 mt-5 rounded-md bg-slate-700">
-            ورود
+            <Link href="/adminPanel/products">ورود</Link>
           </Button>
         </form>
-        <Anchor className="absolute left-2.5 bottom-2.5">بازگشت به سایت</Anchor>
+        <Anchor href="/" className="absolute left-2.5 bottom-2.5">
+          بازگشت به سایت
+        </Anchor>
       </div>
     </div>
   );
