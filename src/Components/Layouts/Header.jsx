@@ -19,11 +19,11 @@ const Header = () => {
             </Link>
           </Button>
         </div>
-        <div class="flex lg:hidden">
-          <div class="space-y-2">
-            <span class="block w-8 h-0.5 bg-white animate-pulse"></span>
-            <span class="block w-8 h-0.5 bg-white animate-pulse"></span>
-            <span class="block w-8 h-0.5 bg-white animate-pulse"></span>
+        <div className="flex lg:hidden">
+          <div className="space-y-2">
+            <span className="block w-8 h-0.5 bg-white animate-pulse"></span>
+            <span className="block w-8 h-0.5 bg-white animate-pulse"></span>
+            <span className="block w-8 h-0.5 bg-white animate-pulse"></span>
           </div>
         </div>
       </div>
