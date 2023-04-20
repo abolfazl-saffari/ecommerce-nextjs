@@ -4,20 +4,16 @@ const ProductCard = () => {
   return (
     <Link
       href="/tools/shovel/15"
-      class="max-w-full h-40 items-center flex flex-row  bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+      className="max-w-full h-40 flex flex-row items-center border rounded-lg shadow bg-slate-800 text-white border-gray-200 hover:bg-slate-700"
     >
       <img
-        class="object-cover w-fit h-28 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg ms-3"
+        className="w-fit h-28 rounded-t-lg object-cover ms-3 md:w-48 md:h-auto md:rounded-none"
         src="https://flowbite.com/docs/images/products/apple-watch.png"
         alt=""
       />
-      <div class="flex flex-col justify-between p-4 leading-normal">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          ساعت هوشمند
-        </h5>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          20000 تومان
-        </p>
+      <div className="flex flex-col justify-between leading-normal p-4">
+        <h5 className="text-2xl font-bold mb-2 text-white">ساعت هوشمند</h5>
+        <p className="font-normal mb-3 text-white">20000 تومان</p>
       </div>
     </Link>
   );
