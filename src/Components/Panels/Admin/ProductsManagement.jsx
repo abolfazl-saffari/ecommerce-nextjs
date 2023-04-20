@@ -1,14 +1,37 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import Button from "@/Components/UI/Button";
 import ProductManagementItem from "./ProductManagementItem";
 import SortingArrowToggle from "./SortingArrowToggle";
+import ProductManagementModal from "./ProductManagementModal";
 
 const ProductsManagement = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [descending, setDescending] = useState(true);
+
+  const showModalHandler = () => {
+    setShowModal(true);
+  };
+  const hideModalHandler = () => {
+    setShowModal(false);
+  };
+  const changeSlopingHandler = () => {
+    setDescending((preState) => {
+      return !preState;
+    });
+  };
+
   return (
     <Fragment>
+      <ProductManagementModal
+        showModal={showModal}
+        onHideModal={hideModalHandler}
+      />
       <div className="flex flex-col justify-between items-center mb-12 md:flex-row">
         <h2 className="text-3xl mb-5 md:mb-0">مدیریت کالا</h2>
-        <Button className="w-full bg-green-600 px-12 py-4 md:w-auto">
+        <Button
+          onClick={showModalHandler}
+          className="w-full px-12 py-4 bg-green-600 md:w-auto"
+        >
           افزودن کالا
         </Button>
       </div>
@@ -22,7 +45,12 @@ const ProductsManagement = () => {
               <th scope="col" className="px-6 py-3">
                 نام کالا
               </th>
-              <SortingArrowToggle scope="col" className="flex gap-2 px-6 py-3">
+              <SortingArrowToggle
+                scope="col"
+                className="flex gap-2 select-none cursor-pointer px-6 py-3"
+                descending={descending}
+                onSlopingHandler={changeSlopingHandler}
+              >
                 دسته بندی
               </SortingArrowToggle>
               <th scope="col" className="px-6 py-3">
@@ -31,18 +59,18 @@ const ProductsManagement = () => {
             </tr>
           </thead>
           <tbody>
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
           </tbody>
         </table>
       </div>

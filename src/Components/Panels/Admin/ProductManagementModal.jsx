@@ -9,12 +9,16 @@ const Weditor = dynamic(
   { ssr: false }
 );
 
-const ProductManagementModal = () => {
+const ProductManagementModal = ({ showModal, onHideModal }) => {
   return (
-    <Modal title="افزودن / ویرایش کالا">
+    <Modal
+      title="افزودن / ویرایش کالا"
+      showModal={showModal}
+      onHideModal={onHideModal}
+    >
       <div className="p-4">
         <label
-          className="block text-sm font-medium  mb-2 text-gray-900"
+          className="block text-sm font-medium  mb-2 text-white"
           htmlFor="file_input"
         >
           تصویر کالا:
@@ -23,9 +27,10 @@ const ProductManagementModal = () => {
           className="w-full block ltr text-sm border rounded-lg cursor-pointer mb-6  text-gray-900 border-gray-300 bg-gray-50"
           id="file_input"
           type="file"
+          accept="image/png, image/jpeg"
         />
         <label
-          className="block text-sm font-medium mb-2 text-gray-900"
+          className="block text-sm font-medium mb-2 text-white"
           htmlFor="text_input"
         >
           نام کالا:
@@ -36,7 +41,7 @@ const ProductManagementModal = () => {
           type="text"
         />
         <label
-          className="block text-sm font-medium mb-2 text-gray-900"
+          className="block text-sm font-medium mb-2 text-white"
           htmlFor="category-input"
         >
           دسته بندی:
@@ -51,7 +56,7 @@ const ProductManagementModal = () => {
           <option value="audi"></option>
         </select>
         <label
-          className="block text-sm font-medium mb-2 text-gray-900"
+          className="block text-sm font-medium mb-2 text-white"
           htmlFor="text_input"
         >
           توضیحات:
