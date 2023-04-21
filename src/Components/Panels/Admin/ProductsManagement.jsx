@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Button from "@/Components/UI/Button";
 import ProductManagementItem from "./ProductManagementItem";
 import SortingArrowToggle from "./SortingArrowToggle";
@@ -7,6 +7,20 @@ import ProductManagementModal from "./ProductManagementModal";
 const ProductsManagement = () => {
   const [showModal, setShowModal] = useState(false);
   const [descending, setDescending] = useState(true);
+
+  useEffect(() => {
+    const escKeyDownHandler = (e) => {
+      if (e.code === "Escape") {
+        hideModalHandler();
+      }
+    };
+
+    document.addEventListener("keydown", escKeyDownHandler);
+
+    return () => {
+      document.removeEventListener("keydown", escKeyDownHandler);
+    };
+  }, []);
 
   const showModalHandler = () => {
     setShowModal(true);
