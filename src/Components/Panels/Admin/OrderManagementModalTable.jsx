@@ -2,7 +2,7 @@ import OrderManagementModalTableItem from "./OrderManagementModalTableItem";
 
 const OrderManagementModalTable = () => {
   return (
-    <div className="max-h-16 overflow-auto md:max-h-36">
+    <div className="max-h-44 overflow-auto md:max-h-56">
       <table className="w-full text-base text-right whitespace-nowrap text-gray-500">
         <thead className="uppercase text-white bg-slate-800 ">
           <tr>
@@ -18,6 +18,11 @@ const OrderManagementModalTable = () => {
           </tr>
         </thead>
         <tbody>
+          <OrderManagementModalTableItem />
+          <OrderManagementModalTableItem />
+          <OrderManagementModalTableItem />
+          <OrderManagementModalTableItem />
+          <OrderManagementModalTableItem />
           <OrderManagementModalTableItem />
           <OrderManagementModalTableItem />
         </tbody>
