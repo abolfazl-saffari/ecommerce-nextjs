@@ -1,7 +1,7 @@
 import { Fragment } from "react";
+import HomeLayout from "@/Components/Layouts/HomeLayout/HomeLayout";
 import ProductsWrapper from "@/Components/Products/ProductsWrapper";
 import ProductCard from "@/Components/Products/ProductCard";
-import HomeLayout from "@/Components/Layouts/HomeLayout/HomeLayout";
 
 export default function Home() {
   return (

@@ -1,28 +1,20 @@
-const ProductManagementItem = () => {
+const ProductManagementItem = ({ onShowModal }) => {
   return (
-    <tr className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-      <th
-        scope="row"
-        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-      >
-        <a
-          href="#"
-          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-        ></a>
+    <tr className="border-t-2 text-black bg-gray-300 border-slate-800 hover:bg-gray-50">
+      <th scope="row" className="font-medium whitespace-nowrap px-6 py-4 ">
+        <a href="#"></a>
       </th>
       <td className="px-6 py-4"> روغن سرخ کردنی سمن - 1.35 کلیویی</td>
       <td className="px-6 py-4">مواد غذایی / کالاهای اساسی و خوار و بار</td>
       <td className="px-6  flex gap-5 py-4">
         <a
           href="#"
-          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+          onClick={onShowModal}
+          className="font-medium text-blue-600 hover:underline"
         >
           ویرایش
         </a>
-        <a
-          href="#"
-          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-        >
+        <a href="#" className="font-medium text-blue-600 hover:underline">
           حذف
         </a>
       </td>

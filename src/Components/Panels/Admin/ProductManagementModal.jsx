@@ -1,5 +1,6 @@
 import Modal from "@/Components/UI/Modal";
 import Button from "@/Components/UI/Button";
+
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import dynamic from "next/dynamic";
 
@@ -8,40 +9,45 @@ const Weditor = dynamic(
   { ssr: false }
 );
 
-const ProductManagementModal = () => {
+const ProductManagementModal = ({ showModal, onHideModal }) => {
   return (
-    <Modal title="افزودن / ویرایش کالا">
+    <Modal
+      title="افزودن / ویرایش کالا"
+      showModal={showModal}
+      onHideModal={onHideModal}
+    >
       <div className="p-4">
         <label
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block text-sm font-medium  mb-2 text-white"
           htmlFor="file_input"
         >
           تصویر کالا:
         </label>
         <input
-          className="ltr mb-6 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+          className="w-full block ltr text-sm border rounded-lg cursor-pointer mb-6  text-gray-900 border-gray-300 bg-gray-50"
           id="file_input"
           type="file"
+          accept="image/png, image/jpeg"
         />
         <label
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block text-sm font-medium mb-2 text-white"
           htmlFor="text_input"
         >
           نام کالا:
         </label>
         <input
-          className="block mb-6 w-full p-1 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+          className="w-full block text-sm border rounded-lg p-1 mb-6 text-gray-900 border-gray-300 bg-gray-50"
           id="text_input"
           type="text"
         />
         <label
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block text-sm font-medium mb-2 text-white"
           htmlFor="category-input"
         >
           دسته بندی:
         </label>
         <select
-          className="mb-6 block w-full p-1 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+          className="w-full block text-sm rounded-lg cursor-pointer p-1 mb-6 text-gray-900 border border-gray-300 bg-gray-50"
           id="category-input"
         >
           <option value="volvo"></option>
@@ -50,7 +56,7 @@ const ProductManagementModal = () => {
           <option value="audi"></option>
         </select>
         <label
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block text-sm font-medium mb-2 text-white"
           htmlFor="text_input"
         >
           توضیحات:
@@ -66,8 +72,8 @@ const ProductManagementModal = () => {
         </div>
         ;
       </div>
-      <div class="flex justify-center p-4 rounded-t">
-        <Button className="w-full md:w-1/5 bg-slate-700 px-3">ذخیره</Button>
+      <div class="flex justify-center rounded-t p-4">
+        <Button className="w-full px-3 bg-slate-800 md:w-1/5">ذخیره</Button>
       </div>
     </Modal>
   );

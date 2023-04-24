@@ -1,13 +1,16 @@
-import { useState } from "react";
-import ChevronDown from "@/Components/Icons/ChevronDownIcon";
 import ChevronUp from "@/Components/Icons/ChevronUpIcon";
+import ChevronDown from "@/Components/Icons/ChevronDownIcon";
 
-const SortingArrowToggle = ({ children, className, scope }) => {
-  const [arrowToggle, setArrowToggle] = useState("upside");
-
+const SortingArrowToggle = ({
+  children,
+  className,
+  descending,
+  onSlopingHandler,
+  scope,
+}) => {
   return (
-    <th scope={scope} className={className}>
-      {arrowToggle === "upside" ? <ChevronDown /> : <ChevronUp />}
+    <th scope={scope} className={className} onClick={onSlopingHandler}>
+      {descending ? <ChevronDown /> : <ChevronUp />}
       <p>{children}</p>
     </th>
   );
