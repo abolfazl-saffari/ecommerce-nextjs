@@ -9,17 +9,7 @@ module.exports = {
     fontFamily: {
       vazir: ["Vazirmatn", "sans-serif"],
     },
-    extend: {
-      keyframes: {
-        drawer: {
-          from: { transform: "translateX(-50%)" },
-          to: { transform: "translateX(0)" },
-        },
-      },
-      animation: {
-        drawer: "drawer 1s ease-in",
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };

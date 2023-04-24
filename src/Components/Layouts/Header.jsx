@@ -43,13 +43,13 @@ const Header = () => {
       <div
         className={`w-full h-full fixed ${
           showHamburgerMenu ? "" : "hidden"
-        } left-0 top-0 opacity-75 z-0 bg-white lg:hidden`}
+        } left-0 top-0 opacity-75 z-40 bg-white lg:hidden`}
         onClick={closeHamburgerMenu}
       ></div>
       <div
-        className={`fixed ${
-          showHamburgerMenu ? "" : "hidden"
-        } h-screen w-5/6 top-0 left-0 opacity-[0.99] z-10 animate-drawer delay-300 bg-slate-900 md:w-3/6 lg:hidden`}
+        className={`fixed h-screen w-5/6 top-0 bottom-0 left-0 ${
+          showHamburgerMenu ? "translate-x-0" : "-translate-x-full"
+        } opacity-[0.99] z-50 transition-transform ease-in duration-700 delay-75 bg-slate-900 md:w-3/6 lg:hidden`}
       >
         <RemoveIcon onClick={closeHamburgerMenu} hamburgerMenu={true} />
         <ul className="mt-6 text-white">
