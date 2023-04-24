@@ -1,9 +1,10 @@
 import Modal from "@/Components/UI/Modal";
+import Button from "@/Components/UI/Button";
 import OrderManagementModalTable from "./OrderManagementModalTable";
 
-const OrderManagementModal = () => {
+const OrderManagementModal = ({ showModal, onHideModal, ordersStatus }) => {
   return (
-    <Modal title="نمایش سفارش">
+    <Modal title="نمایش سفارش" showModal={showModal} onHideModal={onHideModal}>
       <div className="py-4 text-white">
         <div className="grid grid-cols-2 py-2">
           <p className="text-left me-10">نام مشتری:</p>
@@ -29,16 +30,21 @@ const OrderManagementModal = () => {
           <p>1402/01/01</p>
         </div>
       </div>
-      <OrderManagementModalTable />
-      {/* <div class="flex justify-center p-4 rounded-t">
-        <Button className="w-full md:w-1/5 bg-slate-700 px-3">تحویل شد</Button>
-      </div> */}
-      <div className="py-4 text-white">
-        <div className="grid grid-cols-2 py-2">
-          <p className="text-left me-10">زمان تحویل:</p>
-          <p>1402/01/01</p>
+      <OrderManagementModalTable showModal={showModal} />
+      {ordersStatus === "in_progress" ? (
+        <div class="flex justify-center p-4 mt-5 rounded-t">
+          <Button className="w-full md:w-1/5 bg-slate-700 px-3">
+            تحویل شد
+          </Button>
         </div>
-      </div>
+      ) : (
+        <div className="py-4 mt-5 text-white">
+          <div className="grid grid-cols-2 py-2">
+            <p className="text-left me-10">زمان تحویل:</p>
+            <p>1402/01/01</p>
+          </div>
+        </div>
+      )}
     </Modal>
   );
 };

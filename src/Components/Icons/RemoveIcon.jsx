@@ -1,6 +1,7 @@
-const RemoveIcon = () => {
+const RemoveIcon = ({ onClick }) => {
   return (
     <svg
+      onClick={onClick}
       aria-hidden="true"
       class="w-5 h-5"
       fill="currentColor"
