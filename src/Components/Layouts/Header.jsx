@@ -51,7 +51,7 @@ const Header = () => {
           showHamburgerMenu ? "" : "hidden"
         } h-screen w-5/6 top-0 left-0 opacity-[0.99] z-10 bg-slate-900 md:w-3/6 lg:hidden`}
       >
-        <RemoveIcon onClick={closeHamburgerMenu} />
+        <RemoveIcon onClick={closeHamburgerMenu} hamburgerMenu={true} />
         <ul className="mt-4 text-white">
           <Link href="/cart">
             <li className="text-center border rounded-md px-6 py-2 mx-2 mb-2 hover:bg-white hover:text-slate-900">
