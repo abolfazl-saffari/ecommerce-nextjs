@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Anchor from "./Anchor";
 
-const AdminHeaderNavigation = () => {
+const AdminHeaderNavigation = ({ hamburgerMenu }) => {
   const router = useRouter();
   const [navigator, setNavigator] = useState([
     { title: "کالاها", href: "/adminPanel/products", active: false },
@@ -21,16 +21,22 @@ const AdminHeaderNavigation = () => {
   }, []);
 
   return (
-    <div className="hidden gap-2 lg:flex">
-      <ul className="flex gap-10">
+    <div className={`${hamburgerMenu ? "" : "hidden"} gap-2 lg:flex`}>
+      <ul className={`${hamburgerMenu ? "flex flex-col mt-6" : "flex gap-10"}`}>
         {navigator.map((link) => (
-          <li>
+          <li
+            className={`${
+              hamburgerMenu
+                ? "text-center border rounded-md px-6 py-2 mx-2 mb-2 hover:bg-white hover:text-slate-900"
+                : ""
+            }`}
+          >
             <Anchor href={link.href} active={link.active}>
               {link.title}
             </Anchor>
           </li>
         ))}
-        <li>
+        <li className={`${hamburgerMenu ? "mt-5 mx-2" : ""}`}>
           <Anchor href="/"> بازگشت به سایت</Anchor>
         </li>
       </ul>
