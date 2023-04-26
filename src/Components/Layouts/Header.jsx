@@ -22,14 +22,14 @@ const Header = () => {
             <div className="text-xl text-white">فروشگاه مصالح ساختمانی</div>
           </Link>
           <div className="hidden gap-2 lg:flex">
-            <Button className="px-3 bg-slate-700 ">
-              <Link href="/login">مدیریت</Link>
-            </Button>
-            <Button className="px-4 bg-transparent">
-              <Link href="/cart">
+            <Link href="/login">
+              <Button className="px-3 bg-slate-700 ">مدیریت</Button>
+            </Link>
+            <Link href="/cart">
+              <Button className="px-4 bg-transparent">
                 <CartIconWrapper />
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </div>
           <div className="flex lg:hidden" onClick={openHamburgerMenu}>
             <div className="space-y-2">
@@ -43,16 +43,16 @@ const Header = () => {
       <div
         className={`w-full h-full fixed ${
           showHamburgerMenu ? "" : "hidden"
-        } left-0 top-0 opacity-75 z-0 bg-white lg:hidden`}
+        } left-0 top-0 opacity-75 z-40 bg-white lg:hidden`}
         onClick={closeHamburgerMenu}
       ></div>
       <div
-        className={`fixed ${
-          showHamburgerMenu ? "" : "hidden"
-        } h-screen w-5/6 top-0 left-0 opacity-[0.99] z-10 bg-slate-900 md:w-3/6 lg:hidden`}
+        className={`fixed h-screen w-5/6 top-0 bottom-0 left-0 ${
+          showHamburgerMenu ? "translate-x-0" : "-translate-x-full"
+        } opacity-[0.99] z-50 transition-transform ease-in duration-700 delay-75 bg-slate-900 md:w-3/6 lg:hidden`}
       >
         <RemoveIcon onClick={closeHamburgerMenu} hamburgerMenu={true} />
-        <ul className="mt-4 text-white">
+        <ul className="mt-6 text-white">
           <Link href="/cart">
             <li className="text-center border rounded-md px-6 py-2 mx-2 mb-2 hover:bg-white hover:text-slate-900">
               سبد خرید

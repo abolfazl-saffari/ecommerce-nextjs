@@ -34,9 +34,11 @@ const Checkout = () => {
           <DateInput />
         </InputWrapper>
         <div className="flex justify-center my-10">
-          <Button type="submit" className="w-full py-4 bg-green-600 md:w-1/5">
-            <Link href="/payment">پرداخت</Link>
-          </Button>
+          <Link href="/payment" className="w-full md:w-1/5">
+            <Button type="submit" className="w-full bg-green-600">
+              پرداخت
+            </Button>
+          </Link>
         </div>
       </form>
     </Container>
