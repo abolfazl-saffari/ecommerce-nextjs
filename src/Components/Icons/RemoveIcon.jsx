@@ -3,11 +3,9 @@ const RemoveIcon = ({ onClick, hamburgerMenu }) => {
     <svg
       onClick={onClick}
       aria-hidden="true"
-      className={`${
-        hamburgerMenu
-          ? "w-8 h-8 border rounded-2xl ms-2 mt-2 py-1 text-white"
-          : "w-5 h-5"
-      }`}
+      className={`w-8 h-8 border rounded-2xl ${
+        hamburgerMenu ? "ms-2 mt-2" : ""
+      } py-1 text-white`}
       fill="currentColor"
       viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg"
