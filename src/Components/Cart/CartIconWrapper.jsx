@@ -1,5 +1,5 @@
 import CartCountBadge from "./CartCountBadge";
-import CartIcon from "./CartIcon";
+import CartIcon from "../Icons/CartIcon";
 
 const CartIconWrapper = () => {
   return (

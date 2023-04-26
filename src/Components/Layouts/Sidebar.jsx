@@ -2,8 +2,8 @@ import Link from "next/link";
 
 const Sidebar = () => {
   return (
-    <div className="hidden lg:block col-span-1">
-      <div className="fixed pl-5 max-h-[60vh] overflow-y-auto border-r xl:pl-10">
+    <div className="hidden col-span-1 lg:block">
+      <div className="max-h-[60vh] fixed overflow-y-auto border-r pl-5 xl:pl-10">
         <div>
           <p>
             <Link href="/tools">کالاهای اساسی و خوار و بار</Link>
