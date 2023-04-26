@@ -25,9 +25,11 @@ const LoginForm = () => {
             autocomplete="current-password"
             label="رمزعبور:"
           />
-          <Button className="w-full text-sm rounded-md px-3 py-2 mt-5 bg-slate-700">
-            <Link href="/adminPanel/products">ورود</Link>
-          </Button>
+          <Link href="/adminPanel/products">
+            <Button className="w-full text-sm rounded-md px-3 py-2 mt-5 bg-slate-700">
+              ورود
+            </Button>
+          </Link>
         </form>
         <Anchor href="/" className="absolute left-2.5 bottom-2.5">
           بازگشت به سایت
