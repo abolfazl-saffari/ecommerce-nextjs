@@ -22,14 +22,14 @@ const Header = () => {
             <div className="text-xl text-white">فروشگاه مصالح ساختمانی</div>
           </Link>
           <div className="hidden gap-2 lg:flex">
-            <Button className="px-3 bg-slate-700 ">
-              <Link href="/login">مدیریت</Link>
-            </Button>
-            <Button className="px-4 bg-transparent">
-              <Link href="/cart">
+            <Link href="/login">
+              <Button className="px-3 bg-slate-700 ">مدیریت</Button>
+            </Link>
+            <Link href="/cart">
+              <Button className="px-4 bg-transparent">
                 <CartIconWrapper />
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </div>
           <div className="flex lg:hidden" onClick={openHamburgerMenu}>
             <div className="space-y-2">
