@@ -1,5 +1,5 @@
-import Checkout from "@/Components/Checkout/Checkout";
 import HomeLayout from "@/Components/Layouts/HomeLayout/HomeLayout";
+import Checkout from "@/Components/Checkout/Checkout";
 
 const index = () => {
   return (
