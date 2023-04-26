@@ -1,6 +1,6 @@
 const Input = ({ label, id, type, placeholder }) => {
   return (
-    <div className="w-full mb-6 z-0">
+    <div className="w-full mb-6">
       <label htmlFor={id} className="text-lg text-black">
         {label}
       </label>
