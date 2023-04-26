@@ -1,6 +1,6 @@
 const DescriptionInput = () => {
   return (
-    <div className="w-full mb-6 z-0">
+    <div className="w-full mb-6">
       <label htmlFor="address" className="text-lg text-black">
         آدرس :
       </label>
