@@ -32,7 +32,7 @@ const OrderManagementModal = ({ showModal, onHideModal, ordersStatus }) => {
       </div>
       <OrderManagementModalTable showModal={showModal} />
       {ordersStatus === "in_progress" ? (
-        <div class="flex justify-center p-4 mt-5 rounded-t">
+        <div className="flex justify-center p-4 mt-5 rounded-t">
           <Button className="w-full md:w-1/5 bg-slate-700 px-3">
             تحویل شد
           </Button>
