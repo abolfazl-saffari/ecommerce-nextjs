@@ -3,6 +3,9 @@ import { Fragment, useState } from "react";
 import CartIconWrapper from "../Cart/CartIconWrapper";
 import Button from "../UI/Button";
 import RemoveIcon from "../Icons/RemoveIcon";
+import HamburgerLogo from "../HamburgerMenu/HamburgerLogo";
+import HamburgerDrawer from "../HamburgerMenu/HamburgerDrawer";
+import OverlayShadow from "../OverlayShadow/OverlayShadow";
 
 const Header = () => {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
@@ -31,26 +34,15 @@ const Header = () => {
               </Button>
             </Link>
           </div>
-          <div className="flex lg:hidden" onClick={openHamburgerMenu}>
-            <div className="space-y-2">
-              <span className="block w-8 h-0.5 bg-white animate-pulse"></span>
-              <span className="block w-8 h-0.5 bg-white animate-pulse"></span>
-              <span className="block w-8 h-0.5 bg-white animate-pulse"></span>
-            </div>
-          </div>
+          <HamburgerLogo onHamburgerMenuClicked={openHamburgerMenu} />
         </div>
       </header>
-      <div
-        className={`w-full h-full fixed ${
-          showHamburgerMenu ? "" : "hidden"
-        } left-0 top-0 opacity-75 z-40 bg-white lg:hidden`}
-        onClick={closeHamburgerMenu}
-      ></div>
-      <div
-        className={`fixed h-screen w-5/6 top-0 bottom-0 left-0 ${
-          showHamburgerMenu ? "translate-x-0" : "-translate-x-full"
-        } opacity-[0.99] z-50 transition-transform ease-in duration-700 delay-75 bg-slate-900 md:w-3/6 lg:hidden`}
-      >
+      <OverlayShadow
+        hamburgerMenu={true}
+        showHamburgerMenu={showHamburgerMenu}
+        onCloseShadow={closeHamburgerMenu}
+      />
+      <HamburgerDrawer showHamburgerMenu={showHamburgerMenu}>
         <RemoveIcon onClick={closeHamburgerMenu} hamburgerMenu={true} />
         <ul className="mt-6 text-white">
           <Link href="/cart">
@@ -64,7 +56,7 @@ const Header = () => {
             </li>
           </Link>
         </ul>
-      </div>
+      </HamburgerDrawer>
     </Fragment>
   );
 };
