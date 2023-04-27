@@ -1,6 +1,6 @@
 const DateInput = () => {
   return (
-    <div className="w-full mb-6 z-0">
+    <div className="w-full mb-6">
       <label
         htmlFor="delivery_date"
         className="peer-focus:font-medium text-lg text-black"

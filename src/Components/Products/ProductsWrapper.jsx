@@ -4,8 +4,8 @@ const ProductsWrapper = ({ children, title, Sidebar }) => {
   return (
     <div
       className={`col-span-6 ${
-        Sidebar ? "mb-0" : "mb-11"
-      } lg:col-span-5 lg:mr-5`}
+        Sidebar ? "mb-0 lg:mr-5" : "mb-11"
+      } lg:col-span-5`}
     >
       <h2 className="w-fit text-2xl border-b-2 mb-3 border-slate-900">
         <Link href="/tools">{title}</Link>

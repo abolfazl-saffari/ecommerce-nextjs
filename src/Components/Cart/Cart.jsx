@@ -1,11 +1,11 @@
 import Link from "next/link";
-import Container from "../Layouts/Container";
+import { Fragment } from "react";
 import Button from "../UI/Button";
 import CartItemsTable from "./CartItemsTable";
 
 const Cart = () => {
   return (
-    <Container>
+    <Fragment>
       <h2 className="text-4xl mb-14">سبد خرید</h2>
       <CartItemsTable />
       <div className="w-11/12 mx-auto flex flex-col text-center gap-5 md:flex-row md:justify-between md:items-center md:gap-0">
@@ -18,7 +18,7 @@ const Cart = () => {
           </Button>
         </Link>
       </div>
-    </Container>
+    </Fragment>
   );
 };
 
