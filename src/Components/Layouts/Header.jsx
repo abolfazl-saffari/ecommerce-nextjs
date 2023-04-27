@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <Fragment>
-      <header className="sticky top-0 bg-slate-900">
+      <header className="sticky top-0 bg-slate-900 z-40">
         <div className="h-16 container flex justify-between items-center mx-auto py-2">
           <Link href="/">
             <div className="text-xl text-white">فروشگاه مصالح ساختمانی</div>
