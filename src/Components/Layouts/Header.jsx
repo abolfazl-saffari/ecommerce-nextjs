@@ -1,14 +1,26 @@
 import Link from "next/link";
-import { Fragment, useState } from "react";
+import { useRouter } from "next/router";
+import { Fragment, useState, useEffect } from "react";
 import CartIconWrapper from "../Cart/CartIconWrapper";
 import Button from "../UI/Button";
 import RemoveIcon from "../Icons/RemoveIcon";
 import HamburgerLogo from "../HamburgerMenu/HamburgerLogo";
 import HamburgerDrawer from "../HamburgerMenu/HamburgerDrawer";
 import OverlayShadow from "../OverlayShadow/OverlayShadow";
+import Sidebar from "./Sidebar";
 
 const Header = () => {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
+  const [showSideBarInHamburgerMenu, setShowSideBarInHamburgerMenu] =
+    useState(false);
+  const router = useRouter();
+  const { query } = router;
+
+  useEffect(() => {
+    if (query.mainCategory && Object.keys(query).length === 1) {
+      setShowSideBarInHamburgerMenu(true);
+    }
+  }, []);
 
   const closeHamburgerMenu = () => {
     setShowHamburgerMenu(false);
@@ -55,6 +67,7 @@ const Header = () => {
               مدیریت
             </li>
           </Link>
+          {showSideBarInHamburgerMenu && <Sidebar hamburgerMenu={true} />}
         </ul>
       </HamburgerDrawer>
     </Fragment>
