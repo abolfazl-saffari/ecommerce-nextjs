@@ -3,6 +3,7 @@ import RadioInputs from "./RadioInputs";
 import OrderManagementModal from "./OrderManagementModal";
 import OrderManagementItem from "./OrderManagementItem";
 import SortingArrowToggle from "./SortingArrowToggle";
+import Pagination from "@/Components/Pagination/Pagination";
 
 const OrdersManagement = () => {
   const [showModal, setShowModal] = useState(false);
@@ -93,6 +94,7 @@ const OrdersManagement = () => {
           </tbody>
         </table>
       </div>
+      <Pagination />
     </Fragment>
   );
 };
