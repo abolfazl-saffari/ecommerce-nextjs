@@ -1,4 +1,12 @@
 {
+  "users": [
+    {
+      "username": "abolfazldrx@yahoo.com",
+      "password": "Abolfazls200",
+      "Cart": "[]",
+      "Orders": "[]"
+    }
+  ],
   "products": [
     {
       "id": 1,
