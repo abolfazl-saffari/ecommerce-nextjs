@@ -1,20 +1,57 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Button from "@/Components/UI/Button";
 import ProductManagementItem from "./ProductManagementItem";
 import SortingArrowToggle from "./SortingArrowToggle";
+import ProductManagementModal from "./ProductManagementModal";
 
 const ProductsManagement = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [descending, setDescending] = useState(true);
+
+  useEffect(() => {
+    const escKeyDownHandler = (e) => {
+      if (e.code === "Escape") {
+        hideModalHandler();
+      }
+    };
+
+    document.addEventListener("keydown", escKeyDownHandler);
+
+    return () => {
+      document.removeEventListener("keydown", escKeyDownHandler);
+    };
+  }, []);
+
+  const showModalHandler = () => {
+    setShowModal(true);
+  };
+  const hideModalHandler = () => {
+    setShowModal(false);
+  };
+  const changeSlopingHandler = () => {
+    setDescending((preState) => {
+      return !preState;
+    });
+  };
+
   return (
     <Fragment>
-      <div className="flex flex-col md:flex-row mb-12 justify-between items-center">
+      <ProductManagementModal
+        showModal={showModal}
+        onHideModal={hideModalHandler}
+      />
+      <div className="flex flex-col justify-between items-center mb-12 md:flex-row">
         <h2 className="text-3xl mb-5 md:mb-0">مدیریت کالا</h2>
-        <Button className="w-full px-12 py-4 md:w-auto bg-green-600">
+        <Button
+          onClick={showModalHandler}
+          className="w-full px-12 py-4 bg-green-600 md:w-auto"
+        >
           افزودن کالا
         </Button>
       </div>
-      <div className="relative mx-auto overflow-x-auto shadow-md sm:rounded-lg mb-24 md:mb-10">
-        <table className="w-full text-base text-right text-gray-500 dark:text-gray-400 whitespace-nowrap">
-          <thead className="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <div className="relative overflow-x-auto shadow-md mx-auto mb-24 sm:rounded-lg md:mb-10">
+        <table className="w-full text-base text-right whitespace-nowrap">
+          <thead className="uppercase text-white bg-slate-800">
             <tr>
               <th scope="col" className="px-6 py-3">
                 تصویر
@@ -22,7 +59,12 @@ const ProductsManagement = () => {
               <th scope="col" className="px-6 py-3">
                 نام کالا
               </th>
-              <SortingArrowToggle scope="col" className="px-6 py-3 flex gap-2">
+              <SortingArrowToggle
+                scope="col"
+                className="flex gap-2 select-none cursor-pointer px-6 py-3"
+                descending={descending}
+                onSlopingHandler={changeSlopingHandler}
+              >
                 دسته بندی
               </SortingArrowToggle>
               <th scope="col" className="px-6 py-3">
@@ -31,18 +73,18 @@ const ProductsManagement = () => {
             </tr>
           </thead>
           <tbody>
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
-            <ProductManagementItem />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
+            <ProductManagementItem onShowModal={showModalHandler} />
           </tbody>
         </table>
       </div>

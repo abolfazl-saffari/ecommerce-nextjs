@@ -1,10 +1,16 @@
 import Link from "next/link";
 
-const Sidebar = () => {
+const Sidebar = ({ hamburgerMenu }) => {
   return (
-    <div className="hidden lg:block col-span-1">
-      <div className="fixed pl-5 max-h-[60vh] overflow-y-auto border-r xl:pl-10">
-        <div>
+    <div
+      className={`${hamburgerMenu ? "block" : "hidden"} col-span-1 lg:block`}
+    >
+      <div
+        className={`max-h-[60vh] overflow-y-auto border-r pl-5  ${
+          hamburgerMenu ? "border rounded-md px-6 py-2 mx-2 mb-2" : "fixed"
+        }  xl:pl-10`}
+      >
+        <div className={`${hamburgerMenu ? "mb-5" : ""}`}>
           <p>
             <Link href="/tools">کالاهای اساسی و خوار و بار</Link>
           </p>
@@ -23,7 +29,7 @@ const Sidebar = () => {
             </li>
           </ul>
         </div>
-        <div>
+        <div className={`${hamburgerMenu ? "mb-5" : ""}`}>
           <p>
             <Link href="/tools">کالاهای اساسی و خوار و بار</Link>
           </p>
@@ -42,7 +48,7 @@ const Sidebar = () => {
             </li>
           </ul>
         </div>
-        <div>
+        <div className={`${hamburgerMenu ? "mb-5" : ""}`}>
           <p>
             <Link href="/tools">کالاهای اساسی و خوار و بار</Link>
           </p>
@@ -61,7 +67,7 @@ const Sidebar = () => {
             </li>
           </ul>
         </div>
-        <div>
+        <div className={`${hamburgerMenu ? "mb-5" : ""}`}>
           <p>
             <Link href="/tools">کالاهای اساسی و خوار و بار</Link>
           </p>
@@ -80,7 +86,7 @@ const Sidebar = () => {
             </li>
           </ul>
         </div>
-        <div>
+        <div className={`${hamburgerMenu ? "mb-5" : ""}`}>
           <p>
             <Link href="/tools">کالاهای اساسی و خوار و بار</Link>
           </p>
@@ -99,7 +105,7 @@ const Sidebar = () => {
             </li>
           </ul>
         </div>
-        <div>
+        <div className={`${hamburgerMenu ? "mb-5" : ""}`}>
           <p>
             <Link href="/tools">کالاهای اساسی و خوار و بار</Link>
           </p>

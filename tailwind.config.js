@@ -9,6 +9,11 @@ module.exports = {
     fontFamily: {
       vazir: ["Vazirmatn", "sans-serif"],
     },
+    container: {
+      padding: {
+        DEFAULT: "1rem",
+      },
+    },
     extend: {},
   },
   plugins: [],
