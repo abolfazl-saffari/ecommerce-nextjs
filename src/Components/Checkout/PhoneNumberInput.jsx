@@ -1,6 +1,6 @@
 const PhoneNumberInput = () => {
   return (
-    <div className="w-full mb-6 z-0">
+    <div className="w-full mb-6">
       <label htmlFor="phone_number" className="text-lg text-black">
         تلفن همراه :
         <span className="ms-3 text-gray-400">جهت هماهنگی ارسال سفارش</span>

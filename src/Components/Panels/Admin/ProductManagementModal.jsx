@@ -72,7 +72,7 @@ const ProductManagementModal = ({ showModal, onHideModal }) => {
         </div>
         ;
       </div>
-      <div class="flex justify-center rounded-t p-4">
+      <div className="flex justify-center rounded-t p-4">
         <Button className="w-full px-3 bg-slate-800 md:w-1/5">ذخیره</Button>
       </div>
     </Modal>
