@@ -40,6 +40,8 @@ const Home = (props) => {
                     id={product.id}
                     title={product.title}
                     price={product.price}
+                    category={product.category}
+                    subCategory={product.subCategory}
                     image={product.image}
                   />
                 )
