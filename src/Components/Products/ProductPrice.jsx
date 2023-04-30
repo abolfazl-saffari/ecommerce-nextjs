@@ -3,7 +3,7 @@ const ProductPrice = ({ price }) => {
 
   return (
     <p className="text-xl mb-8">
-      <span className="font-black">{formattedPrice}</span> تومان
+      <span className="font-black">{formattedPrice}</span> ریال
     </p>
   );
 };
