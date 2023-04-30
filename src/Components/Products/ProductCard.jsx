@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const ProductCard = ({ id, title, price, category, subCategory, image }) => {
+const ProductCard = ({ id, title, price, category, image }) => {
   const formattedPrice = new Intl.NumberFormat("en-US").format(price);
 
   return (
