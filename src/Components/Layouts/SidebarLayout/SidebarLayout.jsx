@@ -28,7 +28,11 @@ const SidebarLayout = () => {
           <Sidebar />
           <ProductsWrapper title={subCategory || mainCategory}>
             {data
-              .filter((product) => product.category === mainCategory)
+              .filter((product) =>
+                subCategory
+                  ? product.subCategory === subCategory
+                  : product.category === mainCategory
+              )
               .map((product) => (
                 <ProductCard
                   key={product.id}
