@@ -10,7 +10,7 @@ const ProductCard = ({ id, title, price, category, image }) => {
     >
       <img
         className="w-fit h-24 rounded-sm object-cover ms-3 md:w-48 md:h-auto"
-        src={image[0]}
+        src={image ? image[0] : ""}
         alt={title}
       />
       <div className="flex flex-col justify-between leading-normal p-4">
