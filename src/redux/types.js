@@ -1,2 +1,4 @@
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const PRODUCTS_ERROR = "PRODUCTS_ERROR";
+export const GET_PRODUCT = "GET_PRODUCT";
+export const PRODUCT_ERROR = "PRODUCT_ERROR";
