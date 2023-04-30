@@ -17,7 +17,10 @@ const Header = () => {
   const { query } = router;
 
   useEffect(() => {
-    if (query.mainCategory && Object.keys(query).length === 1) {
+    if (
+      (query.subCategory || query.mainCategory) &&
+      Object.keys(query).length >= 1
+    ) {
       setShowSideBarInHamburgerMenu(true);
     }
   }, []);

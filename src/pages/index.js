@@ -31,7 +31,7 @@ const Home = (props) => {
     <Fragment>
       <HomeLayout>
         {categories.map((category, index) => (
-          <ProductsWrapper key={index} title={category}>
+          <ProductsWrapper key={index} title={category} link={`/${category}`}>
             {homePageProducts.map(
               (product) =>
                 product.category === category && (

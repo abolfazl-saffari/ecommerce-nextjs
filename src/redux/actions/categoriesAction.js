@@ -1,7 +1,7 @@
 import { GET_CATEGORIES, CATEGORIES_ERROR } from "../types";
 import axios from "axios";
 
-export const getProduct = () => async (dispatch) => {
+export const getCategories = () => async (dispatch) => {
   try {
     const res = await axios.get(`http://localhost:3004/categories`);
     dispatch({
