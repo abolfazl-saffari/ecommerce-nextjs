@@ -8,7 +8,7 @@ const ProductsWrapper = ({ children, title, Sidebar }) => {
       } lg:col-span-5`}
     >
       <h2 className="w-fit text-2xl border-b-2 mb-3 border-slate-900">
-        <Link href="/tools">{title}</Link>
+        <Link href={`/${title}`}>{title}</Link>
       </h2>
       <div
         className={
