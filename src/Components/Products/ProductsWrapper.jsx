@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const ProductsWrapper = ({ children, title, Sidebar }) => {
+const ProductsWrapper = ({ children, title, link, Sidebar }) => {
   return (
     <div
       className={`col-span-6 ${
@@ -8,7 +8,7 @@ const ProductsWrapper = ({ children, title, Sidebar }) => {
       } lg:col-span-5`}
     >
       <h2 className="w-fit text-2xl border-b-2 mb-3 border-slate-900">
-        <Link href={`/${title}`}>{title}</Link>
+        <Link href={link}>{title}</Link>
       </h2>
       <div
         className={
