@@ -18,7 +18,7 @@ const SingleProduct = () => {
 
   useEffect(() => {
     dispatch(getProduct(productId));
-  }, []);
+  }, [productId]);
 
   return (
     <div className="my-5 md:mt-24 md:mb-12">
