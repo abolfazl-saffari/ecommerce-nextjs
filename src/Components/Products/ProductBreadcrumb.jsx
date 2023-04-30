@@ -1,5 +1,9 @@
-const ProductBreadcrumb = () => {
-  return <p className="text-xl">مصالح /بیل / 1</p>;
+const ProductBreadcrumb = ({ id, title, category, subCategory }) => {
+  return (
+    <p className="text-xl">
+      {category} | {subCategory} | {title}
+    </p>
+  );
 };
 
 export default ProductBreadcrumb;
