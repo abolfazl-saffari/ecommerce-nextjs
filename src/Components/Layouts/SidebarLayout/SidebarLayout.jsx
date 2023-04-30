@@ -26,7 +26,14 @@ const SidebarLayout = () => {
       <Container>
         <div className="grid grid-cols-6">
           <Sidebar />
-          <ProductsWrapper title={subCategory || mainCategory}>
+          <ProductsWrapper
+            title={subCategory || mainCategory}
+            link={
+              subCategory
+                ? `/${mainCategory}/${subCategory}`
+                : `/${mainCategory}`
+            }
+          >
             {data
               .filter((product) =>
                 subCategory

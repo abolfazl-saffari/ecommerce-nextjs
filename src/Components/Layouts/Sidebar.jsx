@@ -26,7 +26,10 @@ const Sidebar = ({ hamburgerMenu }) => {
         }  xl:pl-10`}
       >
         {data.map((category, index) => (
-          <div key={index} className={`${hamburgerMenu ? "mb-5" : "mb-4"}`}>
+          <div
+            key={index}
+            className={`${hamburgerMenu ? "mb-5" : "mb-4"} ms-2`}
+          >
             <p>
               <Link href={`/${category.mainCategory}`}>
                 {category.mainCategory}
