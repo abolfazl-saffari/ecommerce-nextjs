@@ -1,6 +1,14 @@
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "@/redux/actions/cartAction";
 import Anchor from "../Panels/Admin/Anchor";
 
 const CartItem = ({ id, title, price, category, subCategory, inventory }) => {
+  const dispatch = useDispatch();
+
+  const removeItemHandler = () => {
+    dispatch(removeFromCart(id));
+  };
+
   return (
     <tr className="border-t-2 bg-gray-300 border-slate-800 hover:bg-gray-50">
       <th
@@ -17,9 +25,12 @@ const CartItem = ({ id, title, price, category, subCategory, inventory }) => {
       <td className="px-6 py-4">{price}</td>
       <td className="px-6 py-4">{inventory}</td>
       <td className="px-6 py-4">
-        <a href="#" className="font-medium text-blue-600 hover:underline">
+        <p
+          onClick={removeItemHandler}
+          className="font-medium text-blue-600 cursor-pointer hover:underline"
+        >
           حذف
-        </a>
+        </p>
       </td>
     </tr>
   );
