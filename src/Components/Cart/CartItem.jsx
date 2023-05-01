@@ -4,6 +4,7 @@ import Anchor from "../Panels/Admin/Anchor";
 
 const CartItem = ({ id, title, price, category, subCategory, inventory }) => {
   const dispatch = useDispatch();
+  const formattedPrice = new Intl.NumberFormat("en-US").format(price);
 
   const removeItemHandler = () => {
     dispatch(removeFromCart(id, inventory));
@@ -13,7 +14,7 @@ const CartItem = ({ id, title, price, category, subCategory, inventory }) => {
     <tr className="border-t-2 bg-gray-300 border-slate-800 hover:bg-gray-50">
       <th
         scope="row"
-        className="px-6 py-4 font-medium whitespace-nowrap text-black"
+        className="text-right font-medium whitespace-nowrap px-6 py-4 text-black"
       >
         <Anchor
           href={`/${category}/${subCategory}/${id}`}
@@ -22,7 +23,7 @@ const CartItem = ({ id, title, price, category, subCategory, inventory }) => {
           {title}
         </Anchor>
       </th>
-      <td className="px-6 py-4">{price}</td>
+      <td className="px-6 py-4">{formattedPrice}</td>
       <td className="px-6 py-4">{inventory}</td>
       <td className="px-6 py-4">
         <p
