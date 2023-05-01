@@ -6,7 +6,7 @@ const CartItem = ({ id, title, price, category, subCategory, inventory }) => {
   const dispatch = useDispatch();
 
   const removeItemHandler = () => {
-    dispatch(removeFromCart(id));
+    dispatch(removeFromCart(id, inventory));
   };
 
   return (
