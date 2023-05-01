@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
       const updatedStoreAdd = state.cart.concat(action.payload);
-      const totalAdd = state.cart.length;
+      const totalAdd = state.totalItems + +action.payload.inventory;
       return {
         ...state,
         cart: updatedStoreAdd,
@@ -18,9 +18,9 @@ export default (state = initialState, action) => {
       };
     case REMOVE_FROM_CART:
       const updatedCartRem = state.cart.filter(
-        (product) => product.id !== action.payload
+        (product) => product.id !== action.payload.productId
       );
-      const totalRem = state.cart.length;
+      const totalRem = state.totalItems - +action.payload.inventory;
 
       return {
         ...state,
