@@ -4,3 +4,5 @@ export const GET_PRODUCT = "GET_PRODUCT";
 export const PRODUCT_ERROR = "PRODUCT_ERROR";
 export const GET_CATEGORIES = "GET_CATEGORIES";
 export const CATEGORIES_ERROR = "CATEGORIES_ERROR";
+export const ADD_TO_CART = "ADD_TO_CART";
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
