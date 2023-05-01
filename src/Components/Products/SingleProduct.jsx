@@ -13,8 +13,16 @@ const SingleProduct = () => {
   const dispatch = useDispatch();
   const { productId } = useRouter().query;
   const { product } = useSelector((store) => store).product;
-  const { id, title, category, subCategory, image, price, description } =
-    product;
+  const {
+    id,
+    title,
+    category,
+    subCategory,
+    image,
+    price,
+    description,
+    inventory,
+  } = product;
 
   useEffect(() => {
     dispatch(getProduct(productId));
@@ -36,7 +44,7 @@ const SingleProduct = () => {
           </div>
           <div>
             <ProductPrice price={price} />
-            <ProductActions />
+            <ProductActions product={product} />
           </div>
         </div>
       </div>
