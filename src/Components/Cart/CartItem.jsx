@@ -1,6 +1,6 @@
 import Anchor from "../Panels/Admin/Anchor";
 
-const CartItem = () => {
+const CartItem = ({ id, title, price, category, subCategory, inventory }) => {
   return (
     <tr className="border-t-2 bg-gray-300 border-slate-800 hover:bg-gray-50">
       <th
@@ -8,14 +8,14 @@ const CartItem = () => {
         className="px-6 py-4 font-medium whitespace-nowrap text-black"
       >
         <Anchor
-          href="/tools/shovel/15"
+          href={`/${category}/${subCategory}/${id}`}
           className="font-medium text-blue-600 hover:underline"
         >
-          روغن سرخ کردنی سمن - 1.35 کلیویی
+          {title}
         </Anchor>
       </th>
-      <td className="px-6 py-4">100000</td>
-      <td className="px-6 py-4">500</td>
+      <td className="px-6 py-4">{price}</td>
+      <td className="px-6 py-4">{inventory}</td>
       <td className="px-6 py-4">
         <a href="#" className="font-medium text-blue-600 hover:underline">
           حذف
