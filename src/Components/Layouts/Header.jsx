@@ -1,11 +1,29 @@
 import Link from "next/link";
-import { Fragment, useState } from "react";
+import { useRouter } from "next/router";
+import { Fragment, useState, useEffect } from "react";
 import CartIconWrapper from "../Cart/CartIconWrapper";
 import Button from "../UI/Button";
 import RemoveIcon from "../Icons/RemoveIcon";
+import HamburgerLogo from "../HamburgerMenu/HamburgerLogo";
+import HamburgerDrawer from "../HamburgerMenu/HamburgerDrawer";
+import OverlayShadow from "../OverlayShadow/OverlayShadow";
+import Sidebar from "./Sidebar";
 
 const Header = () => {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
+  const [showSideBarInHamburgerMenu, setShowSideBarInHamburgerMenu] =
+    useState(false);
+  const router = useRouter();
+  const { query } = router;
+
+  useEffect(() => {
+    if (
+      (query.subCategory || query.mainCategory) &&
+      Object.keys(query).length >= 1
+    ) {
+      setShowSideBarInHamburgerMenu(true);
+    }
+  }, []);
 
   const closeHamburgerMenu = () => {
     setShowHamburgerMenu(false);
@@ -16,7 +34,7 @@ const Header = () => {
 
   return (
     <Fragment>
-      <header className="sticky top-0 bg-slate-900">
+      <header className="sticky top-0 bg-slate-900 z-40">
         <div className="h-16 container flex justify-between items-center mx-auto py-2">
           <Link href="/">
             <div className="text-xl text-white">فروشگاه مصالح ساختمانی</div>
@@ -31,26 +49,15 @@ const Header = () => {
               </Button>
             </Link>
           </div>
-          <div className="flex lg:hidden" onClick={openHamburgerMenu}>
-            <div className="space-y-2">
-              <span className="block w-8 h-0.5 bg-white animate-pulse"></span>
-              <span className="block w-8 h-0.5 bg-white animate-pulse"></span>
-              <span className="block w-8 h-0.5 bg-white animate-pulse"></span>
-            </div>
-          </div>
+          <HamburgerLogo onHamburgerMenuClicked={openHamburgerMenu} />
         </div>
       </header>
-      <div
-        className={`w-full h-full fixed ${
-          showHamburgerMenu ? "" : "hidden"
-        } left-0 top-0 opacity-75 z-40 bg-white lg:hidden`}
-        onClick={closeHamburgerMenu}
-      ></div>
-      <div
-        className={`fixed h-screen w-5/6 top-0 bottom-0 left-0 ${
-          showHamburgerMenu ? "translate-x-0" : "-translate-x-full"
-        } opacity-[0.99] z-50 transition-transform ease-in duration-700 delay-75 bg-slate-900 md:w-3/6 lg:hidden`}
-      >
+      <OverlayShadow
+        hamburgerMenu={true}
+        showHamburgerMenu={showHamburgerMenu}
+        onCloseShadow={closeHamburgerMenu}
+      />
+      <HamburgerDrawer showHamburgerMenu={showHamburgerMenu}>
         <RemoveIcon onClick={closeHamburgerMenu} hamburgerMenu={true} />
         <ul className="mt-6 text-white">
           <Link href="/cart">
@@ -63,8 +70,9 @@ const Header = () => {
               مدیریت
             </li>
           </Link>
+          {showSideBarInHamburgerMenu && <Sidebar hamburgerMenu={true} />}
         </ul>
-      </div>
+      </HamburgerDrawer>
     </Fragment>
   );
 };

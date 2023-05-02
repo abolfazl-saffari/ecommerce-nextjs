@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
 import Button from "@/Components/UI/Button";
 import InvAndPriceManagementItem from "./InvAndPriceManagementItem";
+import Pagination from "@/Components/Pagination/Pagination";
 
 const InvAndPriceProductsManagement = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -55,6 +56,7 @@ const InvAndPriceProductsManagement = () => {
           </tbody>
         </table>
       </div>
+      <Pagination />
     </Fragment>
   );
 };

@@ -1,25 +1,37 @@
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "@/redux/actions/cartAction";
 import Anchor from "../Panels/Admin/Anchor";
 
-const CartItem = () => {
+const CartItem = ({ id, title, price, category, subCategory, inventory }) => {
+  const dispatch = useDispatch();
+  const formattedPrice = new Intl.NumberFormat("en-US").format(price);
+
+  const removeItemHandler = () => {
+    dispatch(removeFromCart(id, inventory));
+  };
+
   return (
     <tr className="border-t-2 bg-gray-300 border-slate-800 hover:bg-gray-50">
       <th
         scope="row"
-        className="px-6 py-4 font-medium whitespace-nowrap text-black"
+        className="text-right font-medium whitespace-nowrap px-6 py-4 text-black"
       >
         <Anchor
-          href="/tools/shovel/15"
+          href={`/${category}/${subCategory}/${id}`}
           className="font-medium text-blue-600 hover:underline"
         >
-          روغن سرخ کردنی سمن - 1.35 کلیویی
+          {title}
         </Anchor>
       </th>
-      <td className="px-6 py-4">100000</td>
-      <td className="px-6 py-4">500</td>
+      <td className="px-6 py-4">{formattedPrice}</td>
+      <td className="px-6 py-4">{inventory}</td>
       <td className="px-6 py-4">
-        <a href="#" className="font-medium text-blue-600 hover:underline">
+        <p
+          onClick={removeItemHandler}
+          className="font-medium text-blue-600 cursor-pointer hover:underline"
+        >
           حذف
-        </a>
+        </p>
       </td>
     </tr>
   );
