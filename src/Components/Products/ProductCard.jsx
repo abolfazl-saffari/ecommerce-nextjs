@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-const ProductCard = ({ id, title, price, category, image }) => {
+const ProductCard = ({ id, title, price, category, subCategory, image }) => {
   const formattedPrice = new Intl.NumberFormat("en-US").format(price);
 
   return (
     <Link
-      href={`/${category}/${category}/${id}`}
+      href={`/${category}/${subCategory}/${id}`}
       className="max-w-full h-40 flex flex-row items-center border rounded-lg shadow bg-slate-800 text-white border-gray-200 hover:bg-slate-700"
     >
       <img

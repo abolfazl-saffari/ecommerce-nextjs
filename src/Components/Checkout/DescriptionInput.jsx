@@ -1,10 +1,13 @@
-const DescriptionInput = () => {
+import { forwardRef } from "react";
+
+const DescriptionInput = ({}, ref) => {
   return (
     <div className="w-full mb-6">
       <label htmlFor="address" className="text-lg text-black">
         آدرس :
       </label>
       <textarea
+        ref={ref}
         name="address"
         id="address"
         rows="4"
@@ -16,4 +19,4 @@ const DescriptionInput = () => {
   );
 };
 
-export default DescriptionInput;
+export default forwardRef(DescriptionInput);
