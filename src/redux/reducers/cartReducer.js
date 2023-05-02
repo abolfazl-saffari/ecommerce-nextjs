@@ -1,10 +1,15 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, ADD_TOTAL_PRICE } from "../types";
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  ADD_TOTAL_PRICE,
+  ADD_USER_INFO,
+} from "../types";
 
 const initialState = {
   cart: [],
   totalItems: 0,
-  loading: true,
   totalPrice: 0,
+  userInfo: {},
 };
 
 export default (state = initialState, action) => {
@@ -30,6 +35,8 @@ export default (state = initialState, action) => {
       };
     case ADD_TOTAL_PRICE:
       return { ...state, totalPrice: action.payload };
+    case ADD_USER_INFO:
+      return { ...state, userInfo: action.payload };
     default:
       return state;
   }
