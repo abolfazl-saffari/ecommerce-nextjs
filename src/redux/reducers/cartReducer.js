@@ -3,6 +3,7 @@ import {
   REMOVE_FROM_CART,
   ADD_TOTAL_PRICE,
   ADD_USER_INFO,
+  CLEAR_CART,
 } from "../types";
 
 const initialState = {
@@ -32,6 +33,13 @@ export default (state = initialState, action) => {
         ...state,
         cart: updatedCartRem,
         totalItems: totalRem,
+      };
+    case CLEAR_CART:
+      return {
+        cart: [],
+        totalItems: 0,
+        totalPrice: 0,
+        userInfo: {},
       };
     case ADD_TOTAL_PRICE:
       return { ...state, totalPrice: action.payload };
