@@ -6,3 +6,6 @@ export const GET_CATEGORIES = "GET_CATEGORIES";
 export const CATEGORIES_ERROR = "CATEGORIES_ERROR";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+export const ADD_TOTAL_PRICE = "GET_TOTAL_PRICE";
+export const GET_ORDERS = "GET_ORDERS";
+export const GET_USER_INFO = "GET_USER_INFO";
