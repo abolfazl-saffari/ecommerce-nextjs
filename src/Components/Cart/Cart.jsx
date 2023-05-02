@@ -1,11 +1,13 @@
 import { Fragment } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addTotalPrice } from "@/redux/actions/cartAction";
 import Button from "../UI/Button";
 import CartItemsTable from "./CartItemsTable";
 import Anchor from "../Panels/Admin/Anchor";
 
 const Cart = () => {
   const { cart } = useSelector((store) => store).cart;
+  const dispatch = useDispatch();
   const totalPrice = cart.reduce(
     (current, product) => current + product.inventory * product.price,
     0
@@ -23,7 +25,12 @@ const Cart = () => {
               جمع:<span className="ms-5"> {formattedPrice} ریال</span>
             </h4>
             <Anchor href="cart/checkout">
-              <Button className="w-full px-12 py-4 bg-green-600">
+              <Button
+                onClick={() => {
+                  dispatch(addTotalPrice(totalPrice));
+                }}
+                className="w-full px-12 py-4 bg-green-600"
+              >
                 نهایی کردن سبد خرید
               </Button>
             </Anchor>
