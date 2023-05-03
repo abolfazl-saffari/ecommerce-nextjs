@@ -16,10 +16,8 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      console.log(state.cart.find((item) => item.id === action.payload.id));
-      console.log(action.payload.id);
-
       let updatedStoreAdd;
+
       if (state.cart.find((item) => item.id === action.payload.id)) {
         updatedStoreAdd = state.cart.map((item) =>
           item.id === action.payload.id
