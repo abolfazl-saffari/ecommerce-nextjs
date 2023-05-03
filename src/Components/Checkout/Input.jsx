@@ -1,10 +1,13 @@
-const Input = ({ label, id, type, placeholder }) => {
+import { forwardRef } from "react";
+
+const Input = ({ label, id, type, placeholder }, ref) => {
   return (
-    <div className="w-full mb-6 z-0">
+    <div className="w-full mb-6">
       <label htmlFor={id} className="text-lg text-black">
         {label}
       </label>
       <input
+        ref={ref}
         type={type}
         name={id}
         id={id}
@@ -16,4 +19,4 @@ const Input = ({ label, id, type, placeholder }) => {
   );
 };
 
-export default Input;
+export default forwardRef(Input);

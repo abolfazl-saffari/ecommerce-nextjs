@@ -1,33 +1,79 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { Fragment, useState, useEffect } from "react";
 import CartIconWrapper from "../Cart/CartIconWrapper";
 import Button from "../UI/Button";
+import RemoveIcon from "../Icons/RemoveIcon";
+import HamburgerLogo from "../HamburgerMenu/HamburgerLogo";
+import HamburgerDrawer from "../HamburgerMenu/HamburgerDrawer";
+import OverlayShadow from "../OverlayShadow/OverlayShadow";
+import Sidebar from "./Sidebar";
 
 const Header = () => {
+  const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
+  const [showSideBarInHamburgerMenu, setShowSideBarInHamburgerMenu] =
+    useState(false);
+  const router = useRouter();
+  const { query } = router;
+
+  useEffect(() => {
+    if (
+      (query.subCategory || query.mainCategory) &&
+      Object.keys(query).length >= 1
+    ) {
+      setShowSideBarInHamburgerMenu(true);
+    }
+  }, []);
+
+  const closeHamburgerMenu = () => {
+    setShowHamburgerMenu(false);
+  };
+  const openHamburgerMenu = () => {
+    setShowHamburgerMenu(true);
+  };
+
   return (
-    <header className="sticky top-0 bg-slate-900">
-      <div className="container flex justify-between items-center  mx-auto py-2 h-16">
-        <Link href="/">
-          <div className="text-white text-xl">فروشگاه مصالح ساختمانی</div>
-        </Link>
-        <div className="hidden lg:flex gap-2">
-          <Button className="bg-slate-700 px-3">
-            <Link href="/login">مدیریت</Link>
-          </Button>
-          <Button className="bg-transparent px-4">
-            <Link href="/cart">
-              <CartIconWrapper />
+    <Fragment>
+      <header className="sticky top-0 bg-slate-900 z-40">
+        <div className="h-16 container flex justify-between items-center mx-auto py-2">
+          <Link href="/">
+            <div className="text-xl text-white">فروشگاه مصالح ساختمانی</div>
+          </Link>
+          <div className="hidden gap-2 lg:flex">
+            <Link href="/login">
+              <Button className="px-3 bg-slate-700 ">مدیریت</Button>
             </Link>
-          </Button>
-        </div>
-        <div class="flex lg:hidden">
-          <div class="space-y-2">
-            <span class="block w-8 h-0.5 bg-white animate-pulse"></span>
-            <span class="block w-8 h-0.5 bg-white animate-pulse"></span>
-            <span class="block w-8 h-0.5 bg-white animate-pulse"></span>
+            <Link href="/cart">
+              <Button className="px-4 bg-transparent">
+                <CartIconWrapper />
+              </Button>
+            </Link>
           </div>
+          <HamburgerLogo onHamburgerMenuClicked={openHamburgerMenu} />
         </div>
-      </div>
-    </header>
+      </header>
+      <OverlayShadow
+        hamburgerMenu={true}
+        showHamburgerMenu={showHamburgerMenu}
+        onCloseShadow={closeHamburgerMenu}
+      />
+      <HamburgerDrawer showHamburgerMenu={showHamburgerMenu}>
+        <RemoveIcon onClick={closeHamburgerMenu} hamburgerMenu={true} />
+        <ul className="mt-6 text-white">
+          <Link href="/cart">
+            <li className="text-center border rounded-md px-6 py-2 mx-2 mb-2 hover:bg-white hover:text-slate-900">
+              سبد خرید
+            </li>
+          </Link>
+          <Link href="/login">
+            <li className="text-center border rounded-md px-6 py-2 mx-2 mb-2 hover:bg-white hover:text-slate-900">
+              مدیریت
+            </li>
+          </Link>
+          {showSideBarInHamburgerMenu && <Sidebar hamburgerMenu={true} />}
+        </ul>
+      </HamburgerDrawer>
+    </Fragment>
   );
 };
 export default Header;

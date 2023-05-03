@@ -1,9 +1,13 @@
-const ProductBreadcrumb = ({ queries }) => {
-  //   const breadcrumb = queries.map((query) => {
-  //     <a className="inline-block">{query}</a>;
-  //   });
+import Link from "next/link";
 
-  return <p className="text-xl">مصالح /بیل / 1</p>;
+const ProductBreadcrumb = ({ id, title, category, subCategory }) => {
+  return (
+    <p className="text-xl">
+      <Link href={`/${category}`}>{category} | </Link>
+      <Link href={`/${category}/${subCategory}`}>{subCategory} | </Link>
+      <Link href={`/${category}/${subCategory}/${id}`}>{title}</Link>
+    </p>
+  );
 };
 
 export default ProductBreadcrumb;

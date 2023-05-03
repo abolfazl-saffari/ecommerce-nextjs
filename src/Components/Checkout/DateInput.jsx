@@ -1,6 +1,8 @@
-const DateInput = () => {
+import { forwardRef } from "react";
+
+const DateInput = ({}, ref) => {
   return (
-    <div className="w-full mb-6 z-0">
+    <div className="w-full mb-6">
       <label
         htmlFor="delivery_date"
         className="peer-focus:font-medium text-lg text-black"
@@ -8,6 +10,7 @@ const DateInput = () => {
         تاریخ تحویل :
       </label>
       <input
+        ref={ref}
         type="date"
         name="delivery_date"
         id="delivery_date"
@@ -19,4 +22,4 @@ const DateInput = () => {
   );
 };
 
-export default DateInput;
+export default forwardRef(DateInput);
