@@ -29,10 +29,8 @@ export default (state = initialState, action) => {
               }
             : { ...item }
         );
-        console.log("tekrari");
       } else {
         updatedStoreAdd = state.cart.concat(action.payload);
-        console.log("motefafet");
       }
 
       const totalAdd = state.totalItems + +action.payload.inventory;
