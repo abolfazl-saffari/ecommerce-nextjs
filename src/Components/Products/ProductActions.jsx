@@ -30,7 +30,6 @@ const ProductActions = ({ product }) => {
     e.preventDefault();
 
     const changeInv = { ...product, inventory: amount };
-    console.log(maxInventory);
     dispatch(addToCart(changeInv));
   };
 
