@@ -5,6 +5,7 @@ import Button from "../UI/Button";
 
 const ProductActions = ({ product }) => {
   const [amount, setAmount] = useState(1);
+  const [disableBtb, setDisableBtn] = useState(false);
   const { cart } = useSelector((store) => store).cart;
   const dispatch = useDispatch();
 
@@ -14,13 +15,25 @@ const ProductActions = ({ product }) => {
 
   const amountHandler = (e) => {
     setAmount(e.target.value);
+    disableButtonHandler(e.target.max, e.target.value);
   };
+
+  const disableButtonHandler = (max, value) => {
+    if (max === value) {
+      setDisableBtn(true);
+    } else {
+      setDisableBtn(false);
+    }
+  };
+
   const totalSubmitHandler = (e) => {
     e.preventDefault();
 
     const changeInv = { ...product, inventory: amount };
+    console.log(maxInventory);
     dispatch(addToCart(changeInv));
   };
+
   return (
     <form onSubmit={totalSubmitHandler} className="flex items-center gap-5">
       {+product.inventory === 0 ? (
@@ -36,7 +49,11 @@ const ProductActions = ({ product }) => {
             min="1"
             max={isNaN(maxInventory) ? product.inventory : maxInventory}
           />
-          <Button type={"submit"} className={`px-4 bg-green-600`}>
+          <Button
+            disabled={disableBtb}
+            type={"submit"}
+            className={`px-4 bg-green-600`}
+          >
             افزودن به سبد خرید
           </Button>
         </Fragment>
