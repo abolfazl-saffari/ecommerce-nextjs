@@ -3,6 +3,7 @@ import {
   REMOVE_FROM_CART,
   ADD_TOTAL_PRICE,
   ADD_USER_INFO,
+  CLEAR_CART,
 } from "../types";
 
 const initialState = {
@@ -15,7 +16,21 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      const updatedStoreAdd = state.cart.concat(action.payload);
+      let updatedStoreAdd;
+
+      if (state.cart.find((item) => item.id === action.payload.id)) {
+        updatedStoreAdd = state.cart.map((item) =>
+          item.id === action.payload.id
+            ? {
+                ...item,
+                inventory: +item.inventory + +action.payload.inventory,
+              }
+            : { ...item }
+        );
+      } else {
+        updatedStoreAdd = state.cart.concat(action.payload);
+      }
+
       const totalAdd = state.totalItems + +action.payload.inventory;
       return {
         ...state,
@@ -32,6 +47,13 @@ export default (state = initialState, action) => {
         ...state,
         cart: updatedCartRem,
         totalItems: totalRem,
+      };
+    case CLEAR_CART:
+      return {
+        cart: [],
+        totalItems: 0,
+        totalPrice: 0,
+        userInfo: {},
       };
     case ADD_TOTAL_PRICE:
       return { ...state, totalPrice: action.payload };
