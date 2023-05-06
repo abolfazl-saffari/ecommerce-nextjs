@@ -14,7 +14,7 @@ const ProductActions = ({ product }) => {
     product.inventory - (cartItemFinder && cartItemFinder.inventory);
 
   const amountHandler = (e) => {
-    setAmount(e.target.value);
+    setAmount(+e.target.value);
     disableButtonHandler(e.target.max, e.target.value);
   };
 
