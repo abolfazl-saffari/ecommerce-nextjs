@@ -29,7 +29,11 @@ const ProductActions = ({ product }) => {
   const totalSubmitHandler = (e) => {
     e.preventDefault();
 
-    const changeInv = { ...product, inventory: amount };
+    const changeInv = {
+      ...product,
+      inventory: amount,
+      totalProductInv: product.inventory,
+    };
     dispatch(addToCart(changeInv));
   };
 
