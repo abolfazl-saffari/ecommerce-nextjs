@@ -1,4 +1,8 @@
-import { GET_PRODUCTS, DECREASING_PRODUCT_INVENTORY } from "../types";
+import {
+  GET_PRODUCTS,
+  DECREASING_PRODUCT_INVENTORY,
+  REMOVE_PRODUCT,
+} from "../types";
 
 const initialState = {
   products: [],
@@ -16,6 +20,12 @@ export default (state = initialState, action) => {
           : { ...product }
       );
       return { ...state, product: updatedProducts };
+    case REMOVE_PRODUCT:
+      const updatedProductsRem = state.products.filter(
+        (product) => product.id !== action.payload.id
+      );
+      console.log(action.payload);
+      return { ...state };
     default:
       return state;
   }

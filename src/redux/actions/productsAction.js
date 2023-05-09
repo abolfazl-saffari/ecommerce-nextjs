@@ -3,6 +3,8 @@ import {
   PRODUCTS_ERROR,
   DECREASING_PRODUCT_INVENTORY,
   ERROR_DECREASING_PRODUCT_INVENTORY,
+  REMOVE_PRODUCT,
+  REMOVE_PRODUCT_ERROR,
 } from "../types";
 import axios from "axios";
 
@@ -41,3 +43,18 @@ export const decreasingProductInventory =
       });
     }
   };
+
+export const removeProduct = (id) => async (dispatch) => {
+  try {
+    const res = await axios.delete(`http://localhost:3004/products/${id}`);
+    dispatch({
+      type: REMOVE_PRODUCT,
+      payload: res.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: REMOVE_PRODUCT_ERROR,
+      payload: console.log(e),
+    });
+  }
+};
