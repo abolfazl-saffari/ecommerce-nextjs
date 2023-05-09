@@ -3,14 +3,24 @@ import { useRouter } from "next/router";
 import { addOrder } from "@/redux/actions/ordersAction";
 import { clearCart } from "@/redux/actions/cartAction";
 import Button from "@/Components/UI/Button";
+import { decreasingProductInventory } from "@/redux/actions/productsAction";
 
 const Payment = () => {
-  const order = useSelector((store) => store).cart;
+  const { cart: order } = useSelector((store) => store);
   const dispatch = useDispatch();
   const router = useRouter();
-
   const payClickHandler = () => {
-    dispatch(addOrder(order));
+    Promise.all([
+      dispatch(addOrder(order)),
+      ...order.cart.map((item) => {
+        return dispatch(
+          decreasingProductInventory(
+            item.id,
+            +(item.totalProductInv - item.inventory)
+          )
+        );
+      }),
+    ]);
     dispatch(clearCart());
     router.push("/cart/checkout/paymentResult?result=true");
   };
