@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUserInfo } from "@/redux/actions/cartAction";
 import { useRouter } from "next/router";
 import Container from "../Layouts/Container";
@@ -11,6 +11,7 @@ import PhoneNumberInput from "./PhoneNumberInput";
 import DateInput from "./DateInput";
 
 const Checkout = () => {
+  const userInfo = useSelector((store) => store).cart.userInfo;
   const nameInputRef = useRef();
   const lNameInputRef = useRef();
   const phoneNumberInputRef = useRef();
@@ -45,6 +46,7 @@ const Checkout = () => {
             id="first_name"
             type="text"
             placeholder="ابوالفضل"
+            defaultValue={userInfo.name}
           />
           <Input
             ref={lNameInputRef}
@@ -52,14 +54,21 @@ const Checkout = () => {
             id="last_name"
             type="text"
             placeholder="صفاری"
+            defaultValue={userInfo.lName}
           />
         </InputWrapper>
         <InputWrapper>
-          <DescriptionInput ref={descriptionInputRef} />
-          <PhoneNumberInput ref={phoneNumberInputRef} />
+          <DescriptionInput
+            ref={descriptionInputRef}
+            defaultValue={userInfo.address}
+          />
+          <PhoneNumberInput
+            ref={phoneNumberInputRef}
+            defaultValue={userInfo.phoneNumber}
+          />
         </InputWrapper>
         <InputWrapper>
-          <DateInput ref={dateInputRef} />
+          <DateInput ref={dateInputRef} defaultValue={userInfo.deliveryDate} />
         </InputWrapper>
         <div className="flex justify-center my-10">
           <Button type="submit" className="w-full py-5 bg-green-600 md:w-1/4">
