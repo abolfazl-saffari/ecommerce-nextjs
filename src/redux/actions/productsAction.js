@@ -46,10 +46,10 @@ export const decreasingProductInventory =
 
 export const removeProduct = (id) => async (dispatch) => {
   try {
-    const res = await axios.delete(`http://localhost:3004/products/${id}`);
+    await axios.delete(`http://localhost:3004/products/${id}`);
     dispatch({
       type: REMOVE_PRODUCT,
-      payload: res.data,
+      payload: id,
     });
   } catch (e) {
     dispatch({

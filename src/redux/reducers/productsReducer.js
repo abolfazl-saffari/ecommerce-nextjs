@@ -22,10 +22,10 @@ export default (state = initialState, action) => {
       return { ...state, product: updatedProducts };
     case REMOVE_PRODUCT:
       const updatedProductsRem = state.products.filter(
-        (product) => product.id !== action.payload.id
+        (product) => product.id !== action.payload
       );
-      console.log(action.payload);
-      return { ...state };
+
+      return { ...state, products: updatedProductsRem };
     default:
       return state;
   }
