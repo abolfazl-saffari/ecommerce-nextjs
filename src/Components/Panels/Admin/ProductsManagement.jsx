@@ -1,4 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts } from "@/redux/actions/productsAction";
 import Button from "@/Components/UI/Button";
 import ProductManagementItem from "./ProductManagementItem";
 import SortingArrowToggle from "./SortingArrowToggle";
@@ -7,8 +9,13 @@ import ProductManagementModal from "./ProductManagementModal";
 const ProductsManagement = () => {
   const [showModal, setShowModal] = useState(false);
   const [descending, setDescending] = useState(true);
+  const [fetchProducts, setFetchProducts] = useState([]);
+  const dispatch = useDispatch();
+  const productsData = useSelector((store) => store).products.products;
 
   useEffect(() => {
+    dispatch(getProducts());
+
     const escKeyDownHandler = (e) => {
       if (e.code === "Escape") {
         hideModalHandler();
@@ -21,6 +28,10 @@ const ProductsManagement = () => {
       document.removeEventListener("keydown", escKeyDownHandler);
     };
   }, []);
+
+  useEffect(() => {
+    setFetchProducts(productsData);
+  }, [productsData]);
 
   const showModalHandler = () => {
     setShowModal(true);
@@ -73,18 +84,13 @@ const ProductsManagement = () => {
             </tr>
           </thead>
           <tbody>
-            <ProductManagementItem onShowModal={showModalHandler} />
-            <ProductManagementItem onShowModal={showModalHandler} />
-            <ProductManagementItem onShowModal={showModalHandler} />
-            <ProductManagementItem onShowModal={showModalHandler} />
-            <ProductManagementItem onShowModal={showModalHandler} />
-            <ProductManagementItem onShowModal={showModalHandler} />
-            <ProductManagementItem onShowModal={showModalHandler} />
-            <ProductManagementItem onShowModal={showModalHandler} />
-            <ProductManagementItem onShowModal={showModalHandler} />
-            <ProductManagementItem onShowModal={showModalHandler} />
-            <ProductManagementItem onShowModal={showModalHandler} />
-            <ProductManagementItem onShowModal={showModalHandler} />
+            {fetchProducts.map((productItem) => (
+              <ProductManagementItem
+                key={productItem.id}
+                {...productItem}
+                onShowModal={showModalHandler}
+              />
+            ))}
           </tbody>
         </table>
       </div>
