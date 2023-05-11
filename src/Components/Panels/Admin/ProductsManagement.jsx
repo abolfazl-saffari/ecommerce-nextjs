@@ -86,6 +86,7 @@ const ProductsManagement = () => {
           <tbody>
             {fetchProducts.map((productItem) => (
               <ProductManagementItem
+                key={productItem.id}
                 {...productItem}
                 onShowModal={showModalHandler}
               />
