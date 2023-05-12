@@ -1,6 +1,9 @@
 import { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getProducts } from "@/redux/actions/productsAction";
+import {
+  getProducts,
+  sortProductsAlphabetically,
+} from "@/redux/actions/productsAction";
 import Button from "@/Components/UI/Button";
 import ProductManagementItem from "./ProductManagementItem";
 import SortingArrowToggle from "./SortingArrowToggle";
@@ -31,7 +34,8 @@ const ProductsManagement = () => {
 
   useEffect(() => {
     setFetchProducts(productsData);
-  }, [productsData]);
+    dispatch(sortProductsAlphabetically(descending));
+  }, [productsData, descending]);
 
   const showModalHandler = () => {
     setShowModal(true);
