@@ -30,14 +30,15 @@ export default (state = initialState, action) => {
     case SORT_PRODUCTS_ALPHABETICALLY:
       const collator = new Intl.Collator("fa");
       const sortAlphabetically = state.products.sort((a, b) => {
-        return collator.compare(a.category, b.category);
+        if (action.payload) {
+          return collator.compare(a.category, b.category);
+        }
+        return collator.compare(b.category, a.category);
       });
 
       return {
         ...state,
-        products: action.payload
-          ? sortAlphabetically
-          : sortAlphabetically.reverse(),
+        products: sortAlphabetically,
       };
     default:
       return state;
