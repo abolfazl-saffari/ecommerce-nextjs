@@ -5,6 +5,7 @@ import {
   ERROR_DECREASING_PRODUCT_INVENTORY,
   REMOVE_PRODUCT,
   REMOVE_PRODUCT_ERROR,
+  SORT_PRODUCTS_ALPHABETICALLY,
 } from "../types";
 import axios from "axios";
 
@@ -57,4 +58,11 @@ export const removeProduct = (id) => async (dispatch) => {
       payload: console.log(e),
     });
   }
+};
+
+export const sortProductsAlphabetically = (sortStatus) => {
+  return {
+    type: SORT_PRODUCTS_ALPHABETICALLY,
+    payload: sortStatus,
+  };
 };
