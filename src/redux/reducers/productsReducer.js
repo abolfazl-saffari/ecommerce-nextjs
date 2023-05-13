@@ -3,6 +3,8 @@ import {
   DECREASING_PRODUCT_INVENTORY,
   REMOVE_PRODUCT,
   SORT_PRODUCTS_ALPHABETICALLY,
+  ADD_PRODUCT,
+  UPDATE_PRODUCT,
 } from "../types";
 
 const initialState = {
@@ -15,18 +17,29 @@ export default (state = initialState, action) => {
     case GET_PRODUCTS:
       return { ...state, products: action.payload };
     case DECREASING_PRODUCT_INVENTORY:
-      const updatedProducts = state.products.map((product) =>
+      const updatedProductsUPInventory = state.products.map((product) =>
         product.id === payload.id
           ? { ...product, inventory: action.payload.inventory }
           : { ...product }
       );
 
-      return { ...state, product: updatedProducts };
+      return { ...state, products: updatedProductsUPInventory };
     case REMOVE_PRODUCT:
       const updatedProductsRem = state.products.filter(
         (product) => product.id !== action.payload
       );
+
       return { ...state, products: updatedProductsRem };
+    case ADD_PRODUCT:
+      const updatedProductsAdd = state.products.concat(action.payload);
+
+      return { ...state, products: updatedProductsAdd };
+    case UPDATE_PRODUCT:
+      const updatedProductsUPProduct = state.products.map((product) =>
+        product.id === payload.id ? { ...payload } : { ...product }
+      );
+
+      return { ...state, products: updatedProductsUPProduct };
     case SORT_PRODUCTS_ALPHABETICALLY:
       const collator = new Intl.Collator("fa");
       const sortAlphabetically = state.products.sort((a, b) => {
