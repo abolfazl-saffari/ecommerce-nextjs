@@ -6,6 +6,10 @@ import {
   REMOVE_PRODUCT,
   REMOVE_PRODUCT_ERROR,
   SORT_PRODUCTS_ALPHABETICALLY,
+  ADD_PRODUCT,
+  ADD_PRODUCT_ERROR,
+  UPDATE_PRODUCT,
+  UPDATE_PRODUCT_ERROR,
 } from "../types";
 import axios from "axios";
 
@@ -45,12 +49,12 @@ export const decreasingProductInventory =
     }
   };
 
-export const removeProduct = (id) => async (dispatch) => {
+export const removeProduct = (productId) => async (dispatch) => {
   try {
-    await axios.delete(`http://localhost:3004/products/${id}`);
+    await axios.delete(`http://localhost:3004/products/${productId}`);
     dispatch({
       type: REMOVE_PRODUCT,
-      payload: id,
+      payload: productId,
     });
   } catch (e) {
     dispatch({
@@ -59,6 +63,56 @@ export const removeProduct = (id) => async (dispatch) => {
     });
   }
 };
+
+export const addProduct = (product) => async (dispatch) => {
+  try {
+    const res = await axios.post("http://localhost:3004/products", {
+      ...product,
+    });
+    dispatch({
+      type: ADD_PRODUCT,
+      payload: res.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: ADD_PRODUCT_ERROR,
+      payload: console.log(e),
+    });
+  }
+};
+
+export const updateProduct =
+  (
+    productId,
+    productTitle,
+    productCategory,
+    productSubcategory,
+    productImage,
+    productDescription
+  ) =>
+  async (dispatch) => {
+    try {
+      const res = await axios.patch(
+        `http://localhost:3004/products/${productId}`,
+        {
+          title: productTitle,
+          category: productCategory,
+          subCategory: productSubcategory,
+          image: productImage,
+          description: productDescription,
+        }
+      );
+      dispatch({
+        type: UPDATE_PRODUCT,
+        payload: res.data,
+      });
+    } catch (e) {
+      dispatch({
+        type: UPDATE_PRODUCT_ERROR,
+        payload: console.log(e),
+      });
+    }
+  };
 
 export const sortProductsAlphabetically = (sortStatus) => {
   return {
