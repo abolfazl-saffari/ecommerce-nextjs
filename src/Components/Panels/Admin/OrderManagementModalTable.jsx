@@ -1,7 +1,6 @@
 import OrderManagementModalTableItem from "./OrderManagementModalTableItem";
 
 const OrderManagementModalTable = ({ cart }) => {
-  console.log(cart);
   return (
     <div className="max-h-44 overflow-auto md:max-h-56">
       <table className="w-full text-base text-right whitespace-nowrap text-gray-500">
