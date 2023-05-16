@@ -48,6 +48,10 @@ const OrdersManagement = () => {
     }
   }, [orders]);
 
+  useEffect(() => {
+    // dispatch((descending));
+  }, [descending]);
+
   const showModalHandler = (data) => {
     setShowModal(true);
     setUserModalData(data);
