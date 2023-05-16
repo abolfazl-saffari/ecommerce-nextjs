@@ -1,4 +1,4 @@
-import { GET_ORDERS, ADD_ORDER } from "../types";
+import { GET_ORDERS, ADD_ORDER, ORDER_DELIVERED } from "../types";
 
 const initialState = {
   orders: [],
@@ -10,8 +10,14 @@ export default (state = initialState, action) => {
     case GET_ORDERS:
       return { ...state, orders: action.payload };
     case ADD_ORDER:
-      const updatedOrders = state.orders.concat(action.payload);
-      return { ...state, orders: updatedOrders };
+      const updatedOrdersAdd = state.orders.concat(action.payload);
+      return { ...state, orders: updatedOrdersAdd };
+    case ORDER_DELIVERED: {
+      const updatedOrdersDel = state.orders.map((order) =>
+        order.id === action.payload ? { ...order, OrderDelivered: true } : order
+      );
+      return { ...state, orders: updatedOrdersDel };
+    }
     default:
       return state;
   }
