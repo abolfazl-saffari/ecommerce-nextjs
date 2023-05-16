@@ -22,7 +22,6 @@ const OrdersManagement = () => {
         hideModalHandler();
       }
     };
-
     document.addEventListener("keydown", escKeyDownHandler);
     dispatch(getOrders());
 
@@ -44,6 +43,8 @@ const OrdersManagement = () => {
       ));
     if (filteredOrders.length > 0) {
       setIsOrdersEmpty(true);
+    } else {
+      setIsOrdersEmpty(false);
     }
   }, [orders]);
 

@@ -10,9 +10,10 @@ import axios from "axios";
 
 export const addOrder = (order) => async (dispatch) => {
   try {
-    await axios.post("http://localhost:3004/orders", { ...order });
+    const res = await axios.post("http://localhost:3004/orders", { ...order });
     dispatch({
       type: ADD_ORDER,
+      payload: res.data,
     });
   } catch (e) {
     dispatch({

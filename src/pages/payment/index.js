@@ -10,12 +10,18 @@ const Payment = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const payClickHandler = () => {
+    const date = new Date();
+    const year = date.toLocaleString("default", { year: "numeric" });
+    const month = date.toLocaleString("default", { month: "2-digit" });
+    const day = date.toLocaleString("default", { day: "2-digit" });
+    const todayDate = [year, month, day].join("-");
+
     Promise.all([
       dispatch(
         addOrder({
           ...order,
           OrderDelivered: false,
-          OrderRegistrationTime: new Date().toLocaleDateString(),
+          OrderRegistrationTime: todayDate,
         })
       ),
       ...order.cart.map((item) => {
