@@ -6,6 +6,7 @@ const OrderManagementItem = ({
   OrderDelivered,
   OrderRegistrationTime,
   deliveryRegistrationTime,
+  id: orderId,
 }) => {
   const formattedPrice = new Intl.NumberFormat("en-US").format(totalPrice);
 
@@ -26,6 +27,7 @@ const OrderManagementItem = ({
               OrderDelivered,
               deliveryRegistrationTime,
               cart,
+              orderId,
             });
           }}
           className="font-medium text-blue-600 hover:underline"
