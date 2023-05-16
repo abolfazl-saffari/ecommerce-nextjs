@@ -5,6 +5,7 @@ import {
   ADD_ORDER_ERROR,
   ORDER_DELIVERED,
   ORDER_DELIVERED_ERROR,
+  SORT_ORDERS_BY_TIME,
 } from "../types";
 import axios from "axios";
 
@@ -53,4 +54,11 @@ export const orderDelivered = (id) => async (dispatch) => {
       payload: console.log(e),
     });
   }
+};
+
+export const sortOrdersByTime = (sortStatus) => {
+  return {
+    type: SORT_ORDERS_BY_TIME,
+    payload: sortStatus,
+  };
 };
