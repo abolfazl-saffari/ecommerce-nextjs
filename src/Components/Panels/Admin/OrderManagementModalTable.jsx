@@ -1,6 +1,7 @@
 import OrderManagementModalTableItem from "./OrderManagementModalTableItem";
 
-const OrderManagementModalTable = () => {
+const OrderManagementModalTable = ({ cart }) => {
+  console.log(cart);
   return (
     <div className="max-h-44 overflow-auto md:max-h-56">
       <table className="w-full text-base text-right whitespace-nowrap text-gray-500">
@@ -18,13 +19,11 @@ const OrderManagementModalTable = () => {
           </tr>
         </thead>
         <tbody>
-          <OrderManagementModalTableItem />
-          <OrderManagementModalTableItem />
-          <OrderManagementModalTableItem />
-          <OrderManagementModalTableItem />
-          <OrderManagementModalTableItem />
-          <OrderManagementModalTableItem />
-          <OrderManagementModalTableItem />
+          {cart
+            ? cart.map((item) => (
+                <OrderManagementModalTableItem {...item} key={item.id} />
+              ))
+            : []}
         </tbody>
       </table>
     </div>
