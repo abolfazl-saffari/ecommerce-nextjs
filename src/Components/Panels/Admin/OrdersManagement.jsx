@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrders } from "@/redux/actions/ordersAction";
+import { getOrders, sortOrdersByTime } from "@/redux/actions/ordersAction";
 import RadioInputs from "./RadioInputs";
 import OrderManagementModal from "./OrderManagementModal";
 import OrderManagementItem from "./OrderManagementItem";
@@ -31,6 +31,7 @@ const OrdersManagement = () => {
   }, []);
 
   useEffect(() => {
+    dispatch(sortOrdersByTime(descending));
     const filteredOrders = orders
       .filter((order) => order.OrderDelivered === false)
       .map((order) => (
@@ -46,11 +47,7 @@ const OrdersManagement = () => {
     } else {
       setIsOrdersEmpty(false);
     }
-  }, [orders]);
-
-  useEffect(() => {
-    // dispatch((descending));
-  }, [descending]);
+  }, [orders, descending]);
 
   const showModalHandler = (data) => {
     setShowModal(true);
