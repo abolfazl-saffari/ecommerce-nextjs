@@ -11,7 +11,13 @@ const Payment = () => {
   const router = useRouter();
   const payClickHandler = () => {
     Promise.all([
-      dispatch(addOrder(order)),
+      dispatch(
+        addOrder({
+          ...order,
+          OrderDelivered: false,
+          OrderRegistrationTime: new Date().toLocaleDateString(),
+        })
+      ),
       ...order.cart.map((item) => {
         return dispatch(
           decreasingProductInventory(

@@ -1,13 +1,27 @@
-const OrderManagementModalTableItem = () => {
+import Anchor from "./Anchor";
+
+const OrderManagementModalTableItem = ({
+  title,
+  price,
+  inventory,
+  category,
+  subCategory,
+  id,
+}) => {
+  const formattedPrice = new Intl.NumberFormat("en-US").format(price);
+
   return (
     <tr className="border-t-2 text-black bg-gray-300 border-slate-800 hover:bg-gray-50">
       <td className="px-6 py-4">
-        <a href="#" className="font-medium text-blue-600 hover:underline">
-          روغن سرخ کردنی سمن - 1.35 کلیویی
-        </a>
+        <Anchor
+          href={`/${category}/${subCategory}/${id}`}
+          className="font-medium text-blue-600 hover:underline"
+        >
+          {title}
+        </Anchor>
       </td>
-      <td className="text-center px-6 py-4">200000</td>
-      <td className="text-center px-6 py-4">200</td>
+      <td className="text-center px-6 py-4">{formattedPrice}</td>
+      <td className="text-center px-6 py-4">{inventory}</td>
     </tr>
   );
 };
