@@ -5,6 +5,7 @@ import {
   SORT_PRODUCTS_ALPHABETICALLY,
   ADD_PRODUCT,
   UPDATE_PRODUCT,
+  UPDATE_PRODUCT_INV_AND_PRICE,
 } from "../types";
 
 const initialState = {
@@ -40,6 +41,12 @@ export default (state = initialState, action) => {
       );
 
       return { ...state, products: updatedProductsUPProduct };
+    case UPDATE_PRODUCT_INV_AND_PRICE:
+      const updatedProductsInvAndPrice = state.products.map((product) =>
+        product.id === payload.id ? { ...payload } : { ...product }
+      );
+
+      return { ...state, products: updatedProductsInvAndPrice };
     case SORT_PRODUCTS_ALPHABETICALLY:
       const collator = new Intl.Collator("fa");
       const sortAlphabetically = state.products.sort((a, b) => {
