@@ -10,6 +10,8 @@ import {
   ADD_PRODUCT_ERROR,
   UPDATE_PRODUCT,
   UPDATE_PRODUCT_ERROR,
+  UPDATE_PRODUCT_INV_AND_PRICE,
+  UPDATE_PRODUCT_INV_AND_PRICE_ERROR,
 } from "../types";
 import axios from "axios";
 
@@ -44,6 +46,27 @@ export const decreasingProductInventory =
     } catch (e) {
       dispatch({
         type: ERROR_DECREASING_PRODUCT_INVENTORY,
+        payload: console.log(e),
+      });
+    }
+  };
+
+export const updateProductInvAndPrice =
+  (productId, changedInvAndPrice) => async (dispatch) => {
+    try {
+      const res = await axios.patch(
+        `http://localhost:3004/products/${productId}`,
+        {
+          ...changedInvAndPrice,
+        }
+      );
+      dispatch({
+        type: UPDATE_PRODUCT_INV_AND_PRICE,
+        payload: res.data,
+      });
+    } catch (e) {
+      dispatch({
+        type: UPDATE_PRODUCT_INV_AND_PRICE_ERROR,
         payload: console.log(e),
       });
     }
