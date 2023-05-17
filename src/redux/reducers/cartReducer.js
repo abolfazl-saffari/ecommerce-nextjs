@@ -11,6 +11,7 @@ const initialState = {
   totalItems: 0,
   totalPrice: 0,
   userInfo: {},
+  loading: true,
 };
 
 export default (state = initialState, action) => {

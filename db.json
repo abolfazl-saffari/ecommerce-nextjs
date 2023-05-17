@@ -160,8 +160,8 @@
     {
       "id": 1,
       "title": "آچار بکس دسته جغجغه 1/2 معمولی رونیکس مدل RH-2632",
-      "price": 5688000,
-      "inventory": 30,
+      "price": "7000000",
+      "inventory": "55",
       "category": "ابزار آلات",
       "subCategory": "دستی",
       "image": [
@@ -172,8 +172,8 @@
     {
       "id": 2,
       "title": "ابزار تنظیم نیوپایپ (کالیبر)",
-      "price": 7914817,
-      "inventory": 0,
+      "price": "8000000",
+      "inventory": "10",
       "category": "ابزار آلات",
       "subCategory": "دستی",
       "image": [
@@ -256,8 +256,8 @@
     {
       "id": 9,
       "title": "هویه قلمی پاورپلاس Powx1381",
-      "price": 8000000,
-      "inventory": 30,
+      "price": "10000000",
+      "inventory": "3",
       "category": "ابزار آلات",
       "subCategory": "برقی",
       "image": [
