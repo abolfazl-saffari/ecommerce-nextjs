@@ -1,6 +1,9 @@
 import { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getProducts } from "@/redux/actions/productsAction";
+import {
+  getProducts,
+  updateProductInvAndPrice,
+} from "@/redux/actions/productsAction";
 import Button from "@/Components/UI/Button";
 import InvAndPriceManagementItem from "./InvAndPriceManagementItem";
 import Pagination from "@/Components/Pagination/Pagination";
@@ -24,6 +27,13 @@ const InvAndPriceProductsManagement = () => {
   }, [invAndPriceChanges]);
 
   const productsChangesClickHandler = () => {
+    Promise.all([
+      ...invAndPriceChanges.map((product) => {
+        return dispatch(
+          updateProductInvAndPrice(product.id, product.changedParams)
+        );
+      }),
+    ]);
     setInvAndPriceChanges([]);
   };
 

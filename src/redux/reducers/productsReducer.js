@@ -19,7 +19,7 @@ export default (state = initialState, action) => {
       return { ...state, products: action.payload };
     case DECREASING_PRODUCT_INVENTORY:
       const updatedProductsUPInventory = state.products.map((product) =>
-        product.id === payload.id
+        product.id === action.payload.id
           ? { ...product, inventory: action.payload.inventory }
           : { ...product }
       );
@@ -37,13 +37,17 @@ export default (state = initialState, action) => {
       return { ...state, products: updatedProductsAdd };
     case UPDATE_PRODUCT:
       const updatedProductsUPProduct = state.products.map((product) =>
-        product.id === payload.id ? { ...payload } : { ...product }
+        product.id === action.payload.id
+          ? { ...action.payload }
+          : { ...product }
       );
 
       return { ...state, products: updatedProductsUPProduct };
     case UPDATE_PRODUCT_INV_AND_PRICE:
       const updatedProductsInvAndPrice = state.products.map((product) =>
-        product.id === payload.id ? { ...payload } : { ...product }
+        product.id === action.payload.id
+          ? { ...action.payload }
+          : { ...product }
       );
 
       return { ...state, products: updatedProductsInvAndPrice };
