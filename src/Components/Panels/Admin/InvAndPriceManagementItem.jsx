@@ -16,6 +16,8 @@ const InvAndPriceManagementItem = ({
   const inputPriceRef = useRef(null);
   const inputInvRef = useRef(null);
   const formattedPrice = new Intl.NumberFormat("en-US").format(price);
+  const [priceTrigger, setPriceTrigger] = useState(false);
+  const [invTrigger, setInvTrigger] = useState(false);
 
   useEffect(() => {
     if (isInventoryEdited === true) {
@@ -50,6 +52,12 @@ const InvAndPriceManagementItem = ({
       id: id,
       changedParams: { price: e.target.value },
     };
+
+    if (e.target.value === price) {
+      return setInvAndPriceChanges((prevState) => {
+        return prevState.filter((product) => product.id !== changedProduct.id);
+      });
+    }
     setInvAndPriceChanges((prevState) => {
       if (prevState.find((product) => product.id === changedProduct.id)) {
         return prevState.map((product) =>
@@ -72,6 +80,12 @@ const InvAndPriceManagementItem = ({
       id: id,
       changedParams: { inventory: e.target.value },
     };
+
+    if (e.target.value === inventory) {
+      return setInvAndPriceChanges((prevState) => {
+        return prevState.filter((product) => product.id !== changedProduct.id);
+      });
+    }
     setInvAndPriceChanges((prevState) => {
       if (prevState.find((product) => product.id === changedProduct.id)) {
         return prevState.map((product) =>
