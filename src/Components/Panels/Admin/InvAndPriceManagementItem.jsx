@@ -16,8 +16,6 @@ const InvAndPriceManagementItem = ({
   const inputPriceRef = useRef(null);
   const inputInvRef = useRef(null);
   const formattedPrice = new Intl.NumberFormat("en-US").format(price);
-  const [priceTrigger, setPriceTrigger] = useState(false);
-  const [invTrigger, setInvTrigger] = useState(false);
 
   useEffect(() => {
     if (isInventoryEdited === true) {
