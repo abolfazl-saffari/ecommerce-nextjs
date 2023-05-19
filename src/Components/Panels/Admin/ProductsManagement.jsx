@@ -8,9 +8,12 @@ import Button from "@/Components/UI/Button";
 import ProductManagementItem from "./ProductManagementItem";
 import SortingArrowToggle from "./SortingArrowToggle";
 import ProductManagementModal from "./ProductManagementModal";
+import ProductManagementItemImageFullscreenModal from "./ProductManagementItemImageFullscreenModal";
 
 const ProductsManagement = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showImageModal, setShowImageModal] = useState(false);
+  const [userImageModalData, setImageModalData] = useState("");
   const [descending, setDescending] = useState(true);
   const [fetchProducts, setFetchProducts] = useState([]);
   const dispatch = useDispatch();
@@ -43,6 +46,16 @@ const ProductsManagement = () => {
   const hideModalHandler = () => {
     setShowModal(false);
   };
+
+  const showImageModalHandler = (image) => {
+    setShowImageModal(true);
+    setImageModalData(image);
+  };
+  const hideImageModalHandler = () => {
+    setShowImageModal(false);
+    setImageModalData("");
+  };
+
   const changeSlopingHandler = () => {
     setDescending((preState) => {
       return !preState;
@@ -54,6 +67,11 @@ const ProductsManagement = () => {
       <ProductManagementModal
         showModal={showModal}
         onHideModal={hideModalHandler}
+      />
+      <ProductManagementItemImageFullscreenModal
+        showImageModal={showImageModal}
+        userImageModalData={userImageModalData}
+        onHideImageModal={hideImageModalHandler}
       />
       <div className="flex flex-col justify-between items-center mb-12 md:flex-row">
         <h2 className="text-3xl mb-5 md:mb-0">مدیریت کالا</h2>
@@ -90,6 +108,7 @@ const ProductsManagement = () => {
           <tbody>
             {fetchProducts.map((productItem) => (
               <ProductManagementItem
+                onShowImageModal={showImageModalHandler}
                 key={productItem.id}
                 {...productItem}
                 onShowModal={showModalHandler}

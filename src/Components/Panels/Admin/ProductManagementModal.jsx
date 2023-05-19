@@ -119,8 +119,8 @@ const ProductManagementModal = ({ showModal, onHideModal }) => {
             onChange={userCategorySelectedHandler}
           >
             <option value="">لطفا یک دسته را انتخاب کنید ...</option>
-            {categories.map((category) => (
-              <option value={category.mainCategory}>
+            {categories.map((category, index) => (
+              <option key={`${category}${index}`} value={category.mainCategory}>
                 {category.mainCategory}
               </option>
             ))}
@@ -150,8 +150,10 @@ const ProductManagementModal = ({ showModal, onHideModal }) => {
             onChange={userSubcategorySelectedHandler}
           >
             <option value="">لطفا یک زیر دسته را انتخاب کنید ...</option>
-            {subCategories.map((category) => (
-              <option value={category}>{category}</option>
+            {subCategories.map((category, index) => (
+              <option key={`${category}${index}`} value={category}>
+                {category}
+              </option>
             ))}
             <option value="newSubcategory">
               زیر دسته مورد نظر خود را وارد کنید.

@@ -1,6 +1,5 @@
 import { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
-import ProductManagementItemImageFullscreenModal from "./ProductManagementItemImageFullscreenModal";
 import Anchor from "./Anchor";
 import { removeProduct } from "@/redux/actions/productsAction";
 
@@ -11,34 +10,25 @@ const ProductManagementItem = ({
   subCategory,
   image,
   onShowModal,
+  onShowImageModal,
 }) => {
-  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
   const removeProductHandler = () => {
     dispatch(removeProduct(id));
   };
-  const showModalHandler = () => {
-    setShowModal(true);
-  };
-  const hideModalHandler = () => {
-    setShowModal(false);
-  };
 
   return (
     <Fragment>
-      <ProductManagementItemImageFullscreenModal
-        image={image ? image[0] : ""}
-        showModal={showModal}
-        onHideModal={hideModalHandler}
-      />
       <tr className="border-t-2 text-black bg-gray-300 border-slate-800 hover:bg-gray-50">
         <th
           scope="row"
           className="w-36 font-medium whitespace-nowrap px-6 py-4"
         >
           <img
-            onClick={showModalHandler}
+            onClick={() => {
+              onShowImageModal(image ? image[0] : "");
+            }}
             src={image ? image[0] : ""}
             className="rounded-md cursor-pointer"
           />
