@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
-import Anchor from "./Anchor";
 import { removeProduct } from "@/redux/actions/productsAction";
+import Anchor from "./Anchor";
 
 const ProductManagementItem = ({
   id,
@@ -34,29 +34,18 @@ const ProductManagementItem = ({
           />
         </th>
         <td className="px-6 py-4">
-          <Anchor
-            className="text-gray-900"
-            href={`/${category}/${subCategory}/${id}`}
-          >
-            {title}
-          </Anchor>
+          <Anchor href={`/${category}/${subCategory}/${id}`}>{title}</Anchor>
         </td>
         <td className="px-6 py-4">
-          <Anchor className="text-gray-900" href={`/${category}`}>
-            {category}
-          </Anchor>{" "}
-          /{" "}
-          <Anchor
-            className="text-gray-900"
-            href={`/${category}/${subCategory}`}
-          >
-            {subCategory}
-          </Anchor>
+          <Anchor href={`/${category}`}>{category}</Anchor> /{" "}
+          <Anchor href={`/${category}/${subCategory}`}>{subCategory}</Anchor>
         </td>
         <td className="px-6 py-4">
           <div className="flex gap-5">
             <p
-              onClick={onShowModal}
+              onClick={() => {
+                onShowModal(id);
+              }}
               className="font-medium text-blue-600 cursor-pointer hover:underline"
             >
               ویرایش

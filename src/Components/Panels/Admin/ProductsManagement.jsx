@@ -1,5 +1,6 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
 import {
   getProducts,
   sortProductsAlphabetically,
@@ -9,6 +10,7 @@ import ProductManagementItem from "./ProductManagementItem";
 import SortingArrowToggle from "./SortingArrowToggle";
 import ProductManagementModal from "./ProductManagementModal";
 import ProductManagementItemImageFullscreenModal from "./ProductManagementItemImageFullscreenModal";
+import { getProduct } from "@/redux/actions/productAction";
 
 const ProductsManagement = () => {
   const [showModal, setShowModal] = useState(false);
@@ -18,6 +20,8 @@ const ProductsManagement = () => {
   const [fetchProducts, setFetchProducts] = useState([]);
   const dispatch = useDispatch();
   const productsData = useSelector((store) => store).products.products;
+  const { product } = useSelector((store) => store).product;
+  const { register, handleSubmit, reset, setValue, watch } = useForm();
 
   useEffect(() => {
     dispatch(getProducts());
@@ -25,6 +29,7 @@ const ProductsManagement = () => {
     const escKeyDownHandler = (e) => {
       if (e.code === "Escape") {
         hideModalHandler();
+        hideImageModalHandler();
       }
     };
 
@@ -40,16 +45,28 @@ const ProductsManagement = () => {
     dispatch(sortProductsAlphabetically(descending));
   }, [productsData, descending]);
 
-  const showModalHandler = () => {
+  useEffect(() => {
+    reset(product);
+  }, [product]);
+
+  const showModalHandler = (id) => {
     setShowModal(true);
+
+    if (typeof id === "number") {
+      dispatch(getProduct(id));
+    }
   };
   const hideModalHandler = () => {
     setShowModal(false);
+    setValue("title", "");
+    setValue("category", "");
+    setValue("subCategory", "");
+    setValue("image", "");
+    setValue("description", "");
   };
 
   const showImageModalHandler = (image) => {
     setShowImageModal(true);
-    setImageModalData(image);
   };
   const hideImageModalHandler = () => {
     setShowImageModal(false);
@@ -67,6 +84,9 @@ const ProductsManagement = () => {
       <ProductManagementModal
         showModal={showModal}
         onHideModal={hideModalHandler}
+        register={register}
+        handleSubmit={handleSubmit}
+        watch={watch}
       />
       <ProductManagementItemImageFullscreenModal
         showImageModal={showImageModal}
