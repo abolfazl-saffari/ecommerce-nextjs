@@ -1,7 +1,7 @@
 import { GET_PRODUCT } from "../types";
 
 const initialState = {
-  product: [],
+  product: {},
   loading: true,
 };
 

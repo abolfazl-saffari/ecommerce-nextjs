@@ -1,18 +1,18 @@
 import Modal from "@/Components/UI/Modal";
 
 const ProductManagementItemImageFullscreenModal = ({
-  showModal,
-  onHideModal,
-  image,
+  showImageModal,
+  userImageModalData,
+  onHideImageModal,
 }) => {
   return (
     <Modal
       title="نمای نزدیک از محصول :"
-      showModal={showModal}
-      onHideModal={onHideModal}
+      showModal={showImageModal}
+      onHideModal={onHideImageModal}
     >
       <div className="w-full pb-10">
-        <img src={image} className="w-full rounded-md" />
+        <img src={userImageModalData} className="w-full rounded-md" />
       </div>
     </Modal>
   );
