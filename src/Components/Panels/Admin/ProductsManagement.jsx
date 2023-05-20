@@ -21,7 +21,14 @@ const ProductsManagement = () => {
   const dispatch = useDispatch();
   const productsData = useSelector((store) => store).products.products;
   const { product } = useSelector((store) => store).product;
-  const { register, handleSubmit, reset, setValue, watch } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    setValue,
+    watch,
+  } = useForm();
 
   useEffect(() => {
     dispatch(getProducts());
@@ -87,6 +94,7 @@ const ProductsManagement = () => {
         register={register}
         handleSubmit={handleSubmit}
         watch={watch}
+        errors={errors}
       />
       <ProductManagementItemImageFullscreenModal
         showImageModal={showImageModal}

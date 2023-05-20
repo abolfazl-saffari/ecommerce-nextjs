@@ -11,13 +11,13 @@ const ProductManagementModal = ({
   register,
   handleSubmit,
   watch,
+  errors,
 }) => {
   const { categories } = useSelector((store) => store).categories;
   const [subCategories, setSubCategories] = useState([]);
   const watchCategoryInput = watch("category");
   const watchSubCategory = watch("subCategory");
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getCategories());
   }, []);
@@ -36,9 +36,8 @@ const ProductManagementModal = ({
         : []
     );
   };
-
   const formSubmitHandler = (data) => {
-    dispatch(addProduct({ price: 0, inventory: 0, ...data }));
+    // dispatch(addProduct({ price: 0, inventory: 0, ...data }));
     onHideModal();
   };
 
@@ -58,32 +57,51 @@ const ProductManagementModal = ({
           </label>
           <input
             {...register("image", { required: true })}
-            className="w-full block ltr text-sm border rounded-lg cursor-pointer mb-6  text-gray-900 border-gray-300 bg-gray-50"
+            className="w-full block ltr text-sm border rounded-lg cursor-pointer text-gray-900 border-gray-300 bg-gray-50"
             id="file_input"
             type="file"
             accept="image/png, image/jpeg"
           />
+          <p
+            role="alert"
+            className={`${
+              errors.image?.type === "required" ? "visible" : "invisible"
+            } text-xs mt-2 text-red-600`}
+          >
+            بارگزاری عکس الزامی است.
+          </p>
           <label
-            className="block text-sm font-medium mb-2 text-white"
+            className="block text-sm font-medium my-2 text-white"
             htmlFor="text_input"
           >
             نام کالا:
           </label>
           <input
-            {...register("title", { required: true })}
-            className="w-full block text-sm border rounded-lg p-1 mb-6 text-gray-900 border-gray-300 bg-gray-50"
+            {...register("title", {
+              required: true,
+              minLength: 3,
+            })}
+            className="w-full block text-sm border rounded-lg p-1 text-gray-900 border-gray-300 bg-gray-50"
             id="text_input"
             type="text"
           />
+          <p
+            role="alert"
+            className={`${
+              errors.title?.type === "required" ? "visible" : "invisible"
+            } text-xs mt-2 text-red-600`}
+          >
+            نام کالا الزامی است.
+          </p>
           <label
-            className="block text-sm font-medium mb-2 text-white"
+            className="block text-sm font-medium my-2 text-white"
             htmlFor="category-input"
           >
             دسته بندی:
           </label>
           <select
             {...register("category", { required: true })}
-            className="w-full block text-sm rounded-lg cursor-pointer p-1 mb-6 text-gray-900 border border-gray-300 bg-gray-50"
+            className="w-full block text-sm rounded-lg cursor-pointer p-1 text-gray-900 border border-gray-300 bg-gray-50"
             id="category-input"
             onInput={userCategorySelectedHandler}
           >
@@ -94,15 +112,23 @@ const ProductManagementModal = ({
               </option>
             ))}
           </select>
+          <p
+            role="alert"
+            className={`${
+              errors.category?.type === "required" ? "visible" : "invisible"
+            } text-xs mt-2 text-red-600`}
+          >
+            انتخاب دسته بندی کالا الزامی است.
+          </p>
           <label
-            className="block text-sm font-medium mb-2 text-white"
+            className="block text-sm font-medium my-2 text-white"
             htmlFor="category-input"
           >
             زیر دسته:
           </label>
           <select
             {...register("subCategory", { required: true })}
-            className="w-full block text-sm rounded-lg cursor-pointer p-1 mb-6 text-gray-900 border border-gray-300 bg-gray-50"
+            className="w-full block text-sm rounded-lg cursor-pointer p-1 text-gray-900 border border-gray-300 bg-gray-50"
             id="category-input"
             value={watchSubCategory}
           >
@@ -113,17 +139,33 @@ const ProductManagementModal = ({
               </option>
             ))}
           </select>
+          <p
+            role="alert"
+            className={`${
+              errors.subCategory?.type === "required" ? "visible" : "invisible"
+            } text-xs mt-2 text-red-600`}
+          >
+            انتخاب زیر دسته کالا الزامی است.
+          </p>
           <label
-            className="block text-sm font-medium mb-2 text-white"
+            className="block text-sm font-medium my-2 text-white"
             htmlFor="text_input"
           >
             توضیحات:
           </label>
           <textarea
-            {...register("description", { required: true })}
+            {...register("description", { required: true, minLength: 20 })}
             rows="5"
-            className="w-full block text-sm rounded-lg p-2 mb-6 text-gray-900 border border-gray-300 bg-gray-50"
+            className="w-full block text-sm rounded-lg p-2 text-gray-900 border border-gray-300 bg-gray-50"
           ></textarea>
+          <p
+            role="alert"
+            className={`${
+              errors.description?.type === "required" ? "visible" : "invisible"
+            } text-xs mt-2 text-red-600`}
+          >
+            توضیحات کالا الزامی است.
+          </p>
         </div>
         <div className="flex justify-center rounded-t p-4">
           <Button type="submit" className="w-full px-3 bg-slate-800 md:w-1/5">
