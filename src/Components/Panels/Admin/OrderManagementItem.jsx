@@ -1,13 +1,35 @@
-const OrderManagementItem = ({ onShowModal }) => {
+const OrderManagementItem = ({
+  onShowModal,
+  userInfo,
+  totalPrice,
+  cart,
+  OrderDelivered,
+  OrderRegistrationTime,
+  deliveryRegistrationTime,
+  id: orderId,
+}) => {
+  const formattedPrice = new Intl.NumberFormat("en-US").format(totalPrice);
+
   return (
     <tr className="border-t-2 text-black bg-gray-300 border-slate-800 hover:bg-gray-50">
-      <td className="px-6 py-4">ابوالفضل صفاری</td>
-      <td className="px-6 py-4">2000000</td>
-      <td className="text-center px-6 py-4">1399/1/5</td>
+      <td className="px-6 py-4">
+        {userInfo.name} {userInfo.lName}
+      </td>
+      <td className="flex items-center px-6 py-4">{formattedPrice} ريال</td>
+      <td className="text-center px-6 py-4">{userInfo.deliveryDate}</td>
       <td className="text-center px-6 py-4">
         <a
           href="#"
-          onClick={onShowModal}
+          onClick={() => {
+            onShowModal({
+              userInfo,
+              OrderRegistrationTime,
+              OrderDelivered,
+              deliveryRegistrationTime,
+              cart,
+              orderId,
+            });
+          }}
           className="font-medium text-blue-600 hover:underline"
         >
           بررسی سفارش

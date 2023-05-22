@@ -3,7 +3,7 @@ const Button = ({ className, children, onClick, disabled, type }) => {
     <button
       type={type ? type : "button"}
       disabled={disabled}
-      className={`${className} rounded font-semibold border py-2 text-white border-white hover:text-white hover:bg-slate-800 hover:border-transparent`}
+      className={`${className} rounded font-semibold border py-2 text-white border-white hover:text-white hover:bg-slate-800 hover:border-transparent disabled:bg-gray-300 disabled:border-0`}
       onClick={onClick}
     >
       {children}

@@ -1,11 +1,20 @@
-import { GET_ORDERS, ORDERS_ERROR, ADD_ORDER, ADD_ORDER_ERROR } from "../types";
+import {
+  GET_ORDERS,
+  ORDERS_ERROR,
+  ADD_ORDER,
+  ADD_ORDER_ERROR,
+  ORDER_DELIVERED,
+  ORDER_DELIVERED_ERROR,
+  SORT_ORDERS_BY_TIME,
+} from "../types";
 import axios from "axios";
 
 export const addOrder = (order) => async (dispatch) => {
   try {
-    await axios.post("http://localhost:3004/orders", { ...order });
+    const res = await axios.post("http://localhost:3004/orders", { ...order });
     dispatch({
       type: ADD_ORDER,
+      payload: res.data,
     });
   } catch (e) {
     dispatch({
@@ -28,4 +37,28 @@ export const getOrders = () => async (dispatch) => {
       payload: console.log(e),
     });
   }
+};
+
+export const orderDelivered = (id) => async (dispatch) => {
+  try {
+    await axios.patch(`http://localhost:3004/orders/${id}`, {
+      OrderDelivered: true,
+    });
+    dispatch({
+      type: ORDER_DELIVERED,
+      payload: id,
+    });
+  } catch (e) {
+    dispatch({
+      type: ORDER_DELIVERED_ERROR,
+      payload: console.log(e),
+    });
+  }
+};
+
+export const sortOrdersByTime = (sortStatus) => {
+  return {
+    type: SORT_ORDERS_BY_TIME,
+    payload: sortStatus,
+  };
 };
