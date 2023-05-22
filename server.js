@@ -44,8 +44,8 @@ server.use((req, res, next) => {
   if (req.file) {
     const { mimetype, size, filename } = req.file;
 
-    if (mimetype != "image/jpeg")
-      throw new Error("image should be in image/jpeg type");
+    if (mimetype != "image/jpg")
+      throw new Error("image should be in image/jpg type");
     if (size > 2 * 1024 * 1024)
       throw new Error("image size should be less than 2MB");
 
