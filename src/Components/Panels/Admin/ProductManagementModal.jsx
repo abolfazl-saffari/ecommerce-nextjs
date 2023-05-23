@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "@/redux/actions/categoriesAction";
 import { addProduct } from "@/redux/actions/productsAction";
@@ -60,7 +60,7 @@ const ProductManagementModal = ({
             className="w-full block ltr text-sm border rounded-lg cursor-pointer text-gray-900 border-gray-300 bg-gray-50"
             id="file_input"
             type="file"
-            accept="image/png, image/jpeg"
+            accept="image/*"
           />
           <p
             role="alert"
@@ -154,7 +154,7 @@ const ProductManagementModal = ({
             توضیحات:
           </label>
           <textarea
-            {...register("description", { required: true, minLength: 20 })}
+            {...register("description", { required: true, minLength: 5 })}
             rows="5"
             className="w-full block text-sm rounded-lg p-2 text-gray-900 border border-gray-300 bg-gray-50"
           ></textarea>
