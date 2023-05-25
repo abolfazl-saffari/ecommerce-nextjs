@@ -15,6 +15,7 @@ import { getProduct } from "@/redux/actions/productAction";
 const ProductsManagement = () => {
   const [showModal, setShowModal] = useState(false);
   const [showImageModal, setShowImageModal] = useState(false);
+  const [isUserEditing, setIsUserEditing] = useState(false);
   const [userImageModalData, setImageModalData] = useState("");
   const [descending, setDescending] = useState(true);
   const [fetchProducts, setFetchProducts] = useState([]);
@@ -61,6 +62,9 @@ const ProductsManagement = () => {
 
     if (typeof id === "number") {
       dispatch(getProduct(id));
+      setIsUserEditing(true);
+    } else {
+      setIsUserEditing(false);
     }
   };
   const hideModalHandler = () => {
@@ -91,6 +95,7 @@ const ProductsManagement = () => {
       <ProductManagementModal
         showModal={showModal}
         onHideModal={hideModalHandler}
+        isUserEditing={isUserEditing}
         register={register}
         handleSubmit={handleSubmit}
         watch={watch}
@@ -136,6 +141,7 @@ const ProductsManagement = () => {
           <tbody>
             {fetchProducts.map((productItem) => (
               <ProductManagementItem
+                setIsUserEditing={setIsUserEditing}
                 onShowImageModal={showImageModalHandler}
                 key={productItem.id}
                 {...productItem}

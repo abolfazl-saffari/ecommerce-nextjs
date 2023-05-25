@@ -4,11 +4,13 @@ import { getCategories } from "@/redux/actions/categoriesAction";
 import { addProduct } from "@/redux/actions/productsAction";
 import { addImage } from "@/redux/actions/ImageAction";
 import Modal from "@/Components/UI/Modal";
+import ImagePreviewBox from "./ImagePreviewWrapper";
 import Button from "@/Components/UI/Button";
 
 const ProductManagementModal = ({
   showModal,
   onHideModal,
+  isUserEditing,
   register,
   handleSubmit,
   watch,
@@ -54,7 +56,6 @@ const ProductManagementModal = ({
   const ImageUploaderHandler = (e) => {
     dispatch(addImage(e.target.files[0]));
   };
-
   return (
     <Modal
       title="افزودن / ویرایش کالا"
@@ -79,6 +80,7 @@ const ProductManagementModal = ({
             type="file"
             accept="image/*"
           />
+          <ImagePreviewBox Image={Image} />
           <p
             role="alert"
             className={`${
