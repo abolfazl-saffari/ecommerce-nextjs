@@ -2,18 +2,22 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "@/redux/actions/categoriesAction";
 import { addProduct } from "@/redux/actions/productsAction";
+import { addImage } from "@/redux/actions/ImageAction";
 import Modal from "@/Components/UI/Modal";
+import ImagePreviewBox from "./ImagePreviewWrapper";
 import Button from "@/Components/UI/Button";
 
 const ProductManagementModal = ({
   showModal,
   onHideModal,
+  isUserEditing,
   register,
   handleSubmit,
   watch,
   errors,
 }) => {
   const { categories } = useSelector((store) => store).categories;
+  const { Image } = useSelector((store) => store).Image;
   const [subCategories, setSubCategories] = useState([]);
   const watchCategoryInput = watch("category");
   const watchSubCategory = watch("subCategory");
@@ -37,10 +41,21 @@ const ProductManagementModal = ({
     );
   };
   const formSubmitHandler = (data) => {
-    // dispatch(addProduct({ price: 0, inventory: 0, ...data }));
+    dispatch(
+      addProduct({
+        price: 0,
+        inventory: 0,
+        ...data,
+        image: [].concat(`http://localhost:3004/files/${Image}`),
+      })
+    );
+
     onHideModal();
   };
 
+  const ImageUploaderHandler = (e) => {
+    dispatch(addImage(e.target.files[0]));
+  };
   return (
     <Modal
       title="افزودن / ویرایش کالا"
@@ -56,12 +71,16 @@ const ProductManagementModal = ({
             تصویر کالا:
           </label>
           <input
-            {...register("image", { required: true })}
+            {...register("image", {
+              required: true,
+              onChange: ImageUploaderHandler,
+            })}
             className="w-full block ltr text-sm border rounded-lg cursor-pointer text-gray-900 border-gray-300 bg-gray-50"
             id="file_input"
             type="file"
             accept="image/*"
           />
+          <ImagePreviewBox Image={Image} />
           <p
             role="alert"
             className={`${
