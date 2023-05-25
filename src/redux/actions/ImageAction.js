@@ -1,4 +1,4 @@
-import { ADD_IMAGE, ADD_IMAGE_ERROR } from "../types";
+import { ADD_IMAGE, ADD_IMAGE_ERROR, REMOVE_IMAGE } from "../types";
 import axios from "axios";
 
 export const addImage = (Image) => async (dispatch) => {
@@ -22,4 +22,10 @@ export const addImage = (Image) => async (dispatch) => {
       payload: console.log(e),
     });
   }
+};
+
+export const removeImage = () => {
+  return {
+    type: REMOVE_IMAGE,
+  };
 };
