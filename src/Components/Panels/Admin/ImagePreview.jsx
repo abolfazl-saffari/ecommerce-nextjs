@@ -1,12 +1,22 @@
 import { Fragment } from "react";
+import { useDispatch } from "react-redux";
+import { removeImage } from "@/redux/actions/ImageAction";
 
-const ImagePreview = ({ Image }) => {
+const ImagePreview = ({ Image, setValue }) => {
+  const dispatch = useDispatch();
+
+  const removeImageHandler = () => {
+    dispatch(removeImage());
+    setValue("image", "");
+  };
+
   return (
     <Fragment>
       {/* <RemoveIcon /> */}
       <img
-        className="w-[30%] border-2 aspect-[3/2] object-contain border-gray-700"
+        className="w-[30%] border-2 aspect-[3/2] object-contain cursor-pointer border-gray-700"
         src={`http://localhost:3004/files/${Image}`}
+        onClick={removeImageHandler}
       />
     </Fragment>
   );

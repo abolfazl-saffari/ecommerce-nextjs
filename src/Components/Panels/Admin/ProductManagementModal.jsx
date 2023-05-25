@@ -15,6 +15,7 @@ const ProductManagementModal = ({
   handleSubmit,
   watch,
   errors,
+  setValue,
 }) => {
   const { categories } = useSelector((store) => store).categories;
   const { Image } = useSelector((store) => store).Image;
@@ -80,7 +81,7 @@ const ProductManagementModal = ({
             type="file"
             accept="image/*"
           />
-          <ImagePreviewBox Image={Image} />
+          <ImagePreviewBox Image={Image} setValue={setValue} />
           <p
             role="alert"
             className={`${
