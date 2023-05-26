@@ -5,12 +5,12 @@ const ProductCard = ({ id, title, price, category, subCategory, image }) => {
 
   return (
     <Link
-      href={`/${category}/${category}/${id}`}
+      href={`/${category}/${subCategory}/${id}`}
       className="max-w-full h-40 flex flex-row items-center border rounded-lg shadow bg-slate-800 text-white border-gray-200 hover:bg-slate-700"
     >
       <img
         className="w-fit h-24 rounded-sm object-cover ms-3 md:w-48 md:h-auto"
-        src={image[0]}
+        src={image ? image[0] : ""}
         alt={title}
       />
       <div className="flex flex-col justify-between leading-normal p-4">

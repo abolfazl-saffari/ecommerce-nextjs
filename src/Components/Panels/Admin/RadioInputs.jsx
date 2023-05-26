@@ -10,7 +10,7 @@ const RadioInputs = ({ ordersStatus, onOrdersStatusChange }) => {
         </label>
         <input
           className="w-4 h-4 cursor-pointer text-blue-600 bg-gray-100"
-          onClick={onOrdersStatusChange}
+          onChange={onOrdersStatusChange}
           checked={ordersStatus === "sent" ? true : false}
           name="orders_status"
           id="default-radio-1"
@@ -27,7 +27,7 @@ const RadioInputs = ({ ordersStatus, onOrdersStatusChange }) => {
         </label>
         <input
           className="w-4 h-4 cursor-pointer text-blue-600 bg-gray-100"
-          onClick={onOrdersStatusChange}
+          onChange={onOrdersStatusChange}
           checked={ordersStatus === "in_progress" ? true : false}
           name="orders_status"
           id="default-radio-2"

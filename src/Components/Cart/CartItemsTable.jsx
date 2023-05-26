@@ -1,12 +1,12 @@
 import CartItem from "./CartItem";
 
-const CartItemsTable = () => {
+const CartItemsTable = ({ cart }) => {
   return (
     <div className="w-11/12 relative mx-auto overflow-x-auto shadow-md mb-24 sm:rounded-lg md:mb-10">
-      <table className="w-full text-base text-right">
+      <table className="w-full text-base text-center">
         <thead className="uppercase bg-slate-800 text-white">
           <tr>
-            <th scope="col" className="px-6 py-3">
+            <th scope="col" className="text-right px-6 py-3">
               کالا
             </th>
             <th scope="col" className="px-6 py-3">
@@ -21,9 +21,17 @@ const CartItemsTable = () => {
           </tr>
         </thead>
         <tbody>
-          <CartItem />
-          <CartItem />
-          <CartItem />
+          {cart.map((item) => (
+            <CartItem
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              price={item.price}
+              category={item.category}
+              subCategory={item.subCategory}
+              inventory={item.inventory}
+            />
+          ))}
         </tbody>
       </table>
     </div>
