@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "@/redux/actions/categoriesAction";
-import { addProduct } from "@/redux/actions/productsAction";
+import { addProduct, updateProduct } from "@/redux/actions/productsAction";
 import { addImage } from "@/redux/actions/ImageAction";
 import Modal from "@/Components/UI/Modal";
 import ImagePreviewBox from "./ImagePreviewWrapper";
@@ -15,7 +15,7 @@ const ProductManagementModal = ({
   watch,
   errors,
   setValue,
-  editAbleProductImage,
+  isUserEditing,
 }) => {
   const { categories } = useSelector((store) => store).categories;
   const { Image } = useSelector((store) => store).Image;
@@ -41,14 +41,27 @@ const ProductManagementModal = ({
     );
   };
   const formSubmitHandler = (data) => {
-    dispatch(
-      addProduct({
-        price: 0,
-        inventory: 0,
-        ...data,
-        image: [].concat(`http://localhost:3004/files/${Image}`),
-      })
-    );
+    if (isUserEditing) {
+      dispatch(
+        updateProduct(
+          data.id,
+          data.title,
+          data.category,
+          data.subCategory,
+          [].concat(`http://localhost:3004/files/${Image}`),
+          data.description
+        )
+      );
+    } else {
+      dispatch(
+        addProduct({
+          price: 0,
+          inventory: 0,
+          ...data,
+          image: [].concat(`http://localhost:3004/files/${Image}`),
+        })
+      );
+    }
 
     onHideModal();
   };
