@@ -91,7 +91,6 @@ const ProductsManagement = () => {
       return !preState;
     });
   };
-
   return (
     <Fragment>
       <ProductManagementModal

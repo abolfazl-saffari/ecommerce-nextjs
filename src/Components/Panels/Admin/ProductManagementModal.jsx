@@ -10,12 +10,12 @@ import Button from "@/Components/UI/Button";
 const ProductManagementModal = ({
   showModal,
   onHideModal,
-  isUserEditing,
   register,
   handleSubmit,
   watch,
   errors,
   setValue,
+  editAbleProductImage,
 }) => {
   const { categories } = useSelector((store) => store).categories;
   const { Image } = useSelector((store) => store).Image;
@@ -30,7 +30,6 @@ const ProductManagementModal = ({
   useEffect(() => {
     userCategorySelectedHandler({ target: { value: watchCategoryInput } });
   }, [watchCategoryInput]);
-
   const userCategorySelectedHandler = (e) => {
     const subCategoriesOfCurrentCategory = categories.find(
       (category) => category.mainCategory === e.target.value
@@ -53,7 +52,6 @@ const ProductManagementModal = ({
 
     onHideModal();
   };
-
   const ImageUploaderHandler = (e) => {
     dispatch(addImage(e.target.files[0]));
   };
@@ -71,16 +69,18 @@ const ProductManagementModal = ({
           >
             تصویر کالا:
           </label>
-          <input
-            {...register("image", {
-              required: true,
-              onChange: ImageUploaderHandler,
-            })}
-            className="w-full block ltr text-sm border rounded-lg cursor-pointer text-gray-900 border-gray-300 bg-gray-50"
-            id="file_input"
-            type="file"
-            accept="image/*"
-          />
+          {!Boolean(Image) && (
+            <input
+              {...register("image", {
+                required: true,
+                onChange: ImageUploaderHandler,
+              })}
+              className="w-full block ltr text-sm border rounded-lg cursor-pointer text-gray-900 border-gray-300 bg-gray-50"
+              id="file_input"
+              type="file"
+              accept="image/*"
+            />
+          )}
           <ImagePreviewBox Image={Image} setValue={setValue} />
           <p
             role="alert"
