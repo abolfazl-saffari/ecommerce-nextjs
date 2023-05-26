@@ -5,12 +5,13 @@ import {
   getProducts,
   sortProductsAlphabetically,
 } from "@/redux/actions/productsAction";
+import { getProduct } from "@/redux/actions/productAction";
+import { removeImage } from "@/redux/actions/ImageAction";
 import Button from "@/Components/UI/Button";
 import ProductManagementItem from "./ProductManagementItem";
 import SortingArrowToggle from "./SortingArrowToggle";
 import ProductManagementModal from "./ProductManagementModal";
 import ProductManagementItemImageFullscreenModal from "./ProductManagementItemImageFullscreenModal";
-import { getProduct } from "@/redux/actions/productAction";
 
 const ProductsManagement = () => {
   const [showModal, setShowModal] = useState(false);
@@ -68,6 +69,7 @@ const ProductsManagement = () => {
     }
   };
   const hideModalHandler = () => {
+    dispatch(removeImage());
     setShowModal(false);
     setValue("title", "");
     setValue("category", "");
@@ -89,7 +91,6 @@ const ProductsManagement = () => {
       return !preState;
     });
   };
-
   return (
     <Fragment>
       <ProductManagementModal
@@ -100,6 +101,7 @@ const ProductsManagement = () => {
         handleSubmit={handleSubmit}
         watch={watch}
         errors={errors}
+        setValue={setValue}
       />
       <ProductManagementItemImageFullscreenModal
         showImageModal={showImageModal}
