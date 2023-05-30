@@ -80,6 +80,7 @@ const ProductsManagement = () => {
 
   const showImageModalHandler = (image) => {
     setShowImageModal(true);
+    setImageModalData(image);
   };
   const hideImageModalHandler = () => {
     setShowImageModal(false);
