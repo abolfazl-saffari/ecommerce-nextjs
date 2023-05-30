@@ -32,3 +32,5 @@ export const SORT_ORDERS_BY_TIME = "SORT_ORDERS_BY_TIME";
 export const ADD_IMAGE = "ADD_IMAGE";
 export const ADD_IMAGE_ERROR = "ADD_IMAGE_ERROR";
 export const REMOVE_IMAGE = "REMOVE_IMAGE";
+export const GET_USER = "GET_USER";
+export const GET_USER_ERROR = "GET_USER_ERROR";
