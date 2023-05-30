@@ -9,7 +9,7 @@ const ProductCard = ({ id, title, price, category, subCategory, image }) => {
       className="max-w-full h-40 flex flex-row items-center border rounded-lg shadow bg-slate-800 text-white border-gray-200 hover:bg-slate-700"
     >
       <img
-        className="w-fit h-24 rounded-sm object-cover ms-3 md:w-48 md:h-auto"
+        className="w-36 h-full rounded-sm object-fill md:object-cover md:w-48 md:h-full"
         src={image ? image[0] : ""}
         alt={title}
       />
