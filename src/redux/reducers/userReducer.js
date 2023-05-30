@@ -8,7 +8,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_USER:
-      console.log(action.payload.length);
       return {
         ...state,
         user: action.payload.length === 1 ? action.payload[0] : {},
