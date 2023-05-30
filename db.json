@@ -1,10 +1,9 @@
 {
   "users": [
     {
+      "id": 1,
       "username": "abolfazldrx@yahoo.com",
-      "password": "Abolfazls200",
-      "Cart": [],
-      "Orders": []
+      "password": "Abolfazls200"
     }
   ],
   "categories": [
