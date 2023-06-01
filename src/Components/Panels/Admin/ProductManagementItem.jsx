@@ -1,4 +1,5 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
+import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { removeProduct } from "@/redux/actions/productsAction";
 import Anchor from "./Anchor";
@@ -13,6 +14,7 @@ const ProductManagementItem = ({
   onShowImageModal,
 }) => {
   const dispatch = useDispatch();
+  const src = image ? image[0] : "";
 
   const removeProductHandler = () => {
     dispatch(removeProduct(id));
@@ -25,11 +27,15 @@ const ProductManagementItem = ({
           scope="row"
           className="w-36 font-medium whitespace-nowrap px-6 py-4"
         >
-          <img
+          <Image
             onClick={() => {
-              onShowImageModal(image ? image[0] : "");
+              onShowImageModal(src);
             }}
-            src={image ? image[0] : ""}
+            src={src}
+            alt={src}
+            loader={() => src}
+            width={100}
+            height={150}
             className="rounded-md cursor-pointer"
           />
         </th>
