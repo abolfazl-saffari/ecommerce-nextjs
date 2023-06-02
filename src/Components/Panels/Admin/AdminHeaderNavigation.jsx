@@ -25,6 +25,7 @@ const AdminHeaderNavigation = ({ hamburgerMenu }) => {
       <ul className={`${hamburgerMenu ? "flex flex-col mt-6" : "flex gap-10"}`}>
         {navigator.map((link) => (
           <li
+            key={link.title}
             className={`${
               hamburgerMenu
                 ? "text-center border rounded-md px-6 py-2 mx-2 mb-2 hover:bg-white hover:text-slate-900"

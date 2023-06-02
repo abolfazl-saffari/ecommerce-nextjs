@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Pagination = () => {
   return (
     <nav
@@ -6,44 +8,44 @@ const Pagination = () => {
     >
       <ul className="w-full flex justify-center list-style-none rounded-md p-2 bg-slate-800 sm:w-fit">
         <li className="flex-1 text-center sm:flex-grow-0 ">
-          <a
+          <Link
             className="relative block rounded text-sm px-3 py-1.5 bg-transparent text-white hover:bg-white hover:text-black"
             href="#"
           >
             قبلی
-          </a>
+          </Link>
         </li>
         <li>
-          <a
+          <Link
             className="relative block rounded text-sm px-3 py-1.5 bg-transparent text-white hover:bg-white hover:text-black"
             href="#"
           >
             1
-          </a>
+          </Link>
         </li>
         <li aria-current="page">
-          <a
+          <Link
             className="relative block rounded text-sm px-3 py-1.5 bg-transparent text-white hover:bg-white hover:text-black"
             href="#"
           >
             2
-          </a>
+          </Link>
         </li>
         <li>
-          <a
+          <Link
             className="relative block rounded text-sm px-3 py-1.5 bg-transparent text-white hover:bg-white hover:text-black"
             href="#"
           >
             3
-          </a>
+          </Link>
         </li>
         <li className="flex-1 text-center sm:flex-grow-0 ">
-          <a
+          <Link
             className="relative block rounded text-sm px-3 py-1.5 bg-transparent text-white hover:bg-white hover:text-black"
             href="#"
           >
             بعدی
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

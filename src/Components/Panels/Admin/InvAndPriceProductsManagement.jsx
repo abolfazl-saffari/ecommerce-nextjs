@@ -1,12 +1,49 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+import {
+  getProducts,
+  updateProductInvAndPrice,
+} from "@/redux/actions/productsAction";
 import Button from "@/Components/UI/Button";
 import InvAndPriceManagementItem from "./InvAndPriceManagementItem";
 import Pagination from "@/Components/Pagination/Pagination";
 
 const InvAndPriceProductsManagement = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-  const saveChangesButtonHandler = () => {
-    setIsButtonDisabled(false);
+  const [invAndPriceChanges, setInvAndPriceChanges] = useState([]);
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const { products } = useSelector((store) => store).products;
+  const { user } = useSelector((store) => store).user;
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
+
+  useEffect(() => {
+    if (Object.keys(user).length === 0) {
+      router.push("/login");
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (invAndPriceChanges.length === 0) {
+      setIsButtonDisabled(true);
+    } else {
+      setIsButtonDisabled(false);
+    }
+  }, [invAndPriceChanges]);
+
+  const productsChangesClickHandler = () => {
+    Promise.all([
+      ...invAndPriceChanges.map((product) => {
+        return dispatch(
+          updateProductInvAndPrice(product.id, product.changedParams)
+        );
+      }),
+    ]);
+    setInvAndPriceChanges([]);
   };
 
   return (
@@ -16,6 +53,7 @@ const InvAndPriceProductsManagement = () => {
           مدیریت موجودی و قیمت ها
         </h2>
         <Button
+          onClick={productsChangesClickHandler}
           disabled={isButtonDisabled}
           className={`w-full px-12 py-4 bg-green-600 md:w-auto disabled:bg-gray-300`}
         >
@@ -38,21 +76,14 @@ const InvAndPriceProductsManagement = () => {
             </tr>
           </thead>
           <tbody>
-            <InvAndPriceManagementItem
-              onSaveChanges={saveChangesButtonHandler}
-            />
-            <InvAndPriceManagementItem
-              onSaveChanges={saveChangesButtonHandler}
-            />
-            <InvAndPriceManagementItem
-              onSaveChanges={saveChangesButtonHandler}
-            />
-            <InvAndPriceManagementItem
-              onSaveChanges={saveChangesButtonHandler}
-            />
-            <InvAndPriceManagementItem
-              onSaveChanges={saveChangesButtonHandler}
-            />
+            {products.map((product) => (
+              <InvAndPriceManagementItem
+                invAndPriceChanges={invAndPriceChanges}
+                setInvAndPriceChanges={setInvAndPriceChanges}
+                key={product.id}
+                {...product}
+              />
+            ))}
           </tbody>
         </table>
       </div>
