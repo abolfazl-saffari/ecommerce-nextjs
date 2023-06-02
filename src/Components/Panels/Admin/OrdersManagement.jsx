@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 import { getOrders, sortOrdersByTime } from "@/redux/actions/ordersAction";
 import RadioInputs from "./RadioInputs";
 import OrderManagementModal from "./OrderManagementModal";
@@ -13,8 +14,10 @@ const OrdersManagement = () => {
   const [descending, setDescending] = useState(true);
   const [ordersStatus, setOrdersStatus] = useState("in_progress");
   const [isOrdersEmpty, setIsOrdersEmpty] = useState(false);
+  const router = useRouter();
   const dispatch = useDispatch();
   const { orders } = useSelector((store) => store).orders;
+  const { user } = useSelector((store) => store).user;
 
   useEffect(() => {
     const escKeyDownHandler = (e) => {
@@ -29,6 +32,12 @@ const OrdersManagement = () => {
       document.removeEventListener("keydown", escKeyDownHandler);
     };
   }, []);
+
+  useEffect(() => {
+    if (Object.keys(user).length === 0) {
+      router.push("/login");
+    }
+  }, [user]);
 
   useEffect(() => {
     dispatch(sortOrdersByTime(descending));

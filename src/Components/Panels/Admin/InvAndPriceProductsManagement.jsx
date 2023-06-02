@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 import {
   getProducts,
   updateProductInvAndPrice,
@@ -11,12 +12,20 @@ import Pagination from "@/Components/Pagination/Pagination";
 const InvAndPriceProductsManagement = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [invAndPriceChanges, setInvAndPriceChanges] = useState([]);
+  const router = useRouter();
   const dispatch = useDispatch();
   const { products } = useSelector((store) => store).products;
+  const { user } = useSelector((store) => store).user;
 
   useEffect(() => {
     dispatch(getProducts());
   }, []);
+
+  useEffect(() => {
+    if (Object.keys(user).length === 0) {
+      router.push("/login");
+    }
+  }, [user]);
 
   useEffect(() => {
     if (invAndPriceChanges.length === 0) {

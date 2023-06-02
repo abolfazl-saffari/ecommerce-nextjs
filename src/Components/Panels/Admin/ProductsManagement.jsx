@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 import {
   getProducts,
   sortProductsAlphabetically,
@@ -20,9 +21,11 @@ const ProductsManagement = () => {
   const [userImageModalData, setImageModalData] = useState("");
   const [descending, setDescending] = useState(true);
   const [fetchProducts, setFetchProducts] = useState([]);
+  const router = useRouter();
   const dispatch = useDispatch();
   const productsData = useSelector((store) => store).products.products;
   const { product } = useSelector((store) => store).product;
+  const { user } = useSelector((store) => store).user;
   const {
     register,
     handleSubmit,
@@ -48,6 +51,12 @@ const ProductsManagement = () => {
       document.removeEventListener("keydown", escKeyDownHandler);
     };
   }, []);
+
+  useEffect(() => {
+    if (Object.keys(user).length === 0) {
+      router.push("/login");
+    }
+  }, [user]);
 
   useEffect(() => {
     setFetchProducts(productsData);
