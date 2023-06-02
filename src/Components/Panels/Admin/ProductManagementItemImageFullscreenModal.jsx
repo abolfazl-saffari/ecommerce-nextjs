@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Modal from "@/Components/UI/Modal";
 
 const ProductManagementItemImageFullscreenModal = ({
@@ -5,6 +6,8 @@ const ProductManagementItemImageFullscreenModal = ({
   userImageModalData,
   onHideImageModal,
 }) => {
+  const src = userImageModalData;
+
   return (
     <Modal
       title="نمای نزدیک از محصول :"
@@ -12,7 +15,14 @@ const ProductManagementItemImageFullscreenModal = ({
       onHideModal={onHideImageModal}
     >
       <div className="w-full pb-10">
-        <img src={userImageModalData} className="w-full rounded-md" />
+        <Image
+          src={src}
+          alt={src}
+          width={100}
+          height={100}
+          loader={() => src}
+          className="w-full rounded-md"
+        />
       </div>
     </Modal>
   );

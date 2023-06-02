@@ -13,16 +13,8 @@ const SingleProduct = () => {
   const dispatch = useDispatch();
   const { productId } = useRouter().query;
   const { product } = useSelector((store) => store).product;
-  const {
-    id,
-    title,
-    category,
-    subCategory,
-    image,
-    price,
-    description,
-    inventory,
-  } = product;
+  const { id, title, category, subCategory, image, price, description } =
+    product;
 
   useEffect(() => {
     dispatch(getProduct(productId));
